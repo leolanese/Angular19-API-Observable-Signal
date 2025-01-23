@@ -12,7 +12,7 @@ export class APIService {
   get<T>(url: string): Observable<T> {
     return this.http.get<T>(url).pipe(
       debounceTime(300),
-      shareReplay(1), // Cache the response to avoid multiple requests
+      shareReplay(1), //  Caches and replays the latest value to any new subscribers
       catchError((error) => {
         console.error('Error fetching data:', error);
         return throwError(() => new Error('Failed to fetch data.'));
