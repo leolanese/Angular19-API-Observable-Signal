@@ -10,10 +10,8 @@ import { ChildComponent } from '../child/child.component';
   selector: 'app-parent',
   imports: [AsyncPipe, ChildComponent],
   template: `
-    <p>
-      parent works!
-    </p>
-
+    parent
+    
     <app-child 
       (notifyParent)="fetchData('users')"  
       [users$]="data$"
