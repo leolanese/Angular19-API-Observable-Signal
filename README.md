@@ -36,3 +36,8 @@ It also showcases the usage of an interceptor to log HTTP requests and responses
 - `takeUntilDestroyed(this.destroyRef)` to automatically unsubscribe when the component is destroyed, simplifying the cleanup process even further
 
 - `shareReplay(1)` because multiple components might subscribe to the same observable
+
+- TS Generic Type Parameter <T>
+T can replaced with: user, photos, comments, etc. 
+The method returns an Observable of type T
+
