@@ -25,9 +25,10 @@ ng serve -o --poll=2000
 ```
 
 - `SoC`
-This example demonstrates the separation of concerns between the `service (responsible for fetching data)`, 
-the `smart component (responsible for handling business logic and passing data to the dummy component)`, 
-and the `dummy component (responsible for rendering the UI)`. 
+This example demonstrates the separation of concerns between the: 
+`service (responsible for fetching data)`, 
+`smart component (responsible for handling business logic and passing data to the dummy component)`, 
+`dummy component (responsible for rendering the UI)` 
 
 - `Function-based Interceptor`: 
 It also showcases the usage of an interceptor to log HTTP requests and responses.
