@@ -1,5 +1,6 @@
 # Test
 
+```js
 src/
 └── app/
     │   ├── child/
@@ -10,6 +11,7 @@ src/
     │           └── parent.component.spec.ts
     ├── api.service.ts
     └── http.interceptor.ts
+```
 
 ```js
 ng new test
