@@ -26,15 +26,17 @@ export class ParentComponent {
   // Initialise to an empty observable
   data$!: Observable<any[]> 
 
-  destroyRef = inject(DestroyRef);
   apiService = inject(APIService)
+  destroyRef = inject(DestroyRef);
 
   // smart component fully reusable with generic type
-  fetchData<T>(term: any): void {
+  // <T> is a generic placeholder
+  // here the 'lance shape generic': <T>(term:string) will be replace by <user>
+  fetchData<T>(term: string): void {
     const url = `${this.apiService.apiRootUrl}${term}`;
 
     this.data$ = this.apiService.get<T[]>(url).pipe(
-      distinctUntilChanged(), // Only emit if the data has changed
+      distinctUntilChanged(), // emit ONLY, if data has changed from previous emission
       takeUntilDestroyed(this.destroyRef) // Clean up subscriptions
     );
   }

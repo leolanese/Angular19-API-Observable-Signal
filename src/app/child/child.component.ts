@@ -10,10 +10,10 @@ import { Observable } from 'rxjs';
       child works!
     </p>
 
-   <button (click)="notifyParent.emit()">Fetch Data</button>
+   <button (click)="toParent.emit()">Fetch Data</button>
 
 <ul>
-  @for (user of users$ | async; ; let index = $index; let first = $first, last = $last; track user.id) {
+  @for (user of users$ | async; track user.id) {
     <li>
     <div>First: {{ first }}: Last {{ last }}</div>
       <h4>ID: {{ user.id }} - {{index}}</h4>
@@ -31,7 +31,7 @@ import { Observable } from 'rxjs';
 })
 export class ChildComponent {
   @Output()  // -> P
-  notifyParent: EventEmitter<string> = new EventEmitter();
+  toParent: EventEmitter<string> = new EventEmitter();
 
   @Input() // C <-
   users$!: Observable<any[]>;
