@@ -1,10 +1,10 @@
-import { CommonModule } from '@angular/common';
+import { AsyncPipe, CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-child',
-  imports: [CommonModule],
+  imports: [CommonModule, AsyncPipe],
   template: `
     child
 
@@ -13,8 +13,7 @@ import { Observable } from 'rxjs';
     <ul>
       @for (user of users$ | async; track user.id) {
         <li>
-        <div>First: {{ first }}: Last {{ last }}</div>
-          <h4>ID: {{ user.id }} - {{index}}</h4>
+          <p>ID: {{ user.id }}</p>
           <p>Username: {{ user.username }}</p>
           <p>Email: {{ user.email }}</p>
         </li>
@@ -32,5 +31,7 @@ export class ChildComponent {
   toParent: EventEmitter<string> = new EventEmitter();
 
   @Input() // C <-
-  users$!: Observable<any[]>;
+  users$!: Observable<any[]>; 
+  // TS non-null assertion operator
+  // avoids unnecessary null/undefined checks when working with @Input()
 }

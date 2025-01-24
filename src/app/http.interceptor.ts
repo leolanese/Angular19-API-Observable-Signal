@@ -2,6 +2,7 @@ import { HttpInterceptorFn, HttpRequest } from '@angular/common/http';
 import { tap } from 'rxjs';
 
 // Function Interceptor, rather than a class-based interceptor
+// It takes a HttpRequest and a HttpHandlerFn as arguments and returns an Observable<HttpEvent<any>>.
 export const httpRequestInterceptor: HttpInterceptorFn = (req: HttpRequest<unknown>, next) => {
   if (req.url.startsWith('https://jsonplaceholder.typicode.com')) {
       const headers = req.headers.set('Authorization', 'TEST');

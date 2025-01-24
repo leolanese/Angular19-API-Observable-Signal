@@ -1,4 +1,3 @@
-import { AsyncPipe } from '@angular/common';
 import { Component, DestroyRef, inject } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { distinctUntilChanged } from 'rxjs';
@@ -8,12 +7,12 @@ import { ChildComponent } from '../child/child.component';
 
 @Component({
   selector: 'app-parent',
-  imports: [AsyncPipe, ChildComponent],
+  imports: [ChildComponent],
   template: `
     parent
     
     <app-child 
-      (notifyParent)="fetchData('users')"  
+      (toParent)="fetchData('users')"  
       [users$]="data$"
     />
   `,
@@ -33,10 +32,11 @@ export class ParentComponent {
   fetchData<T>(term: string): void {
     const url = `${this.apiService.apiRootUrl}${term}`;
 
-    this.data$ = this.apiService.get<T[]>(url).pipe(
-      distinctUntilChanged(), // emit ONLY, if data has changed from previous emission
-      takeUntilDestroyed(this.destroyRef) // Clean up subscriptions
-    );
+    this.data$ = this.apiService
+      .get<T[]>(url).pipe(
+        distinctUntilChanged(), // emit ONLY, if data has changed from previous emission
+        takeUntilDestroyed(this.destroyRef) // Clean up subscriptions
+      );
   }
 
 }
