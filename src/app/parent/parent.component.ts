@@ -13,7 +13,7 @@ import { ChildComponent } from '../child/child.component';
     
     <app-child 
       (toParent)="fetchData('users')"  
-      [users$]="data$"
+      [items$]="data$"
     />
   `,
   styles: ``,

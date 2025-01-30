@@ -5,25 +5,28 @@ import { Observable } from 'rxjs';
 @Component({
   selector: 'app-child',
   imports: [CommonModule, AsyncPipe],
+  standalone: true,
   template: `
     child
 
     <button (click)="toParent.emit()">Fetch Data</button>
 
     <ul>
-      @for (user of users$ | async; track user.id) {
+      @for (item of items$ | async; let index = $index; track index) {
+        <!-- 
+          <pre>{{ items$ | async | json }}</pre> 
+        -->
         <li>
-          <p>ID: {{ user.id }}</p>
-          <p>Username: {{ user.username }}</p>
-          <p>Email: {{ user.email }}</p>
+          <p>ID: {{ item.id }}</p>
+          <p>USERNAME: {{ item.username }}</p>
+          <p>ADDRESS: {{ item.address?.street }}</p>
         </li>
       } @empty {
-        <li>Loading...</li>
+          <li>Loading...</li>
       }
     </ul>
   `,
   styles: ``,
-  standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ChildComponent {
@@ -31,7 +34,7 @@ export class ChildComponent {
   toParent: EventEmitter<string> = new EventEmitter();
 
   @Input() // C <-
-  users$!: Observable<any[]>; 
+  items$!: Observable<any[]>; 
   // TS non-null assertion operator
   // avoids unnecessary null/undefined checks when working with @Input()
 }

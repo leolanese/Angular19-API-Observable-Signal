@@ -1,5 +1,17 @@
 # Test
 
+## AC's
+
+1.	Get all country names and display on the page: https://restcountries.com/v3.1/independent?fields=name
+
+2.	Select a country and Show the flag: https://restcountries.com/v3.1/name/Grenada?fields=name,flags
+
+3.	Search countries by language: https://restcountries.com/v3.1/lang/spanish?fields=name  
+
+---
+
+## Solution Arquitecture
+
 ```js
 src/
 └── app/
@@ -19,6 +31,8 @@ ng new test
 ng g c child --inline-style --inline-template --standalone
 ng g c parent --inline-style --inline-template --standalone
 ng g s api
+
+// optional
 ng g interceptor http
 
 ng serve -o --poll=2000
