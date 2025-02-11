@@ -6,7 +6,7 @@ import { Observable, catchError, debounceTime, shareReplay, throwError } from 'r
 export class APIService {
   // constructor-based dependency injection
   http = inject(HttpClient);
-  apiRootUrl = "https://jsonplaceholder.typicode.com/";
+  apiUrl = `https://restcountries.com/v3.1/`;
 
   // Generic Type Parameter <T>
   // T can replaced with: user, photos, comments, etc

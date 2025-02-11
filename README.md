@@ -2,11 +2,17 @@
 
 ## AC's
 
-1.	Get all country names and display on the page: https://restcountries.com/v3.1/independent?fields=name
+1.	Get all country names and display on the page: 
+https://restcountries.com/v3.1/independent?fields=name
 
-2.	Select a country and Show the flag: https://restcountries.com/v3.1/name/Grenada?fields=name,flags
+2.	Select a country and Show the flag: 
+https://restcountries.com/v3.1/name/Grenada?fields=name,flags
 
-3.	Search countries by language: https://restcountries.com/v3.1/lang/spanish?fields=name  
+3.	Search countries by language: 
+https://restcountries.com/v3.1/lang/spanish?fields=name  
+
+
+! - These tasks are nested tasks, and depends on each other payload, that a trick.
 
 ---
 

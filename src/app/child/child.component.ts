@@ -7,34 +7,58 @@ import { Observable } from 'rxjs';
   imports: [CommonModule, AsyncPipe],
   standalone: true,
   template: `
-    child
-
-    <button (click)="toParent.emit()">Fetch Data</button>
-
+    <!-- List of countries -->
+    <button (click)="toParent.emit()">Fetch AC1</button>
     <ul>
       @for (item of items$ | async; let index = $index; track index) {
-        <!-- 
-          <pre>{{ items$ | async | json }}</pre> 
-        -->
-        <li>
-          <p>ID: {{ item.id }}</p>
-          <p>USERNAME: {{ item.username }}</p>
-          <p>ADDRESS: {{ item.address?.street }}</p>
+        <!-- <pre>{{ items$ | async | json }}</pre> -->
+        <li (click)="onCountrySelected(item.name.common)">
+          <p>country name: {{ item.name.common }}</p>
         </li>
       } @empty {
           <li>Loading...</li>
       }
     </ul>
+
+    <!-- Display selected country flag -->
+    <div *ngIf="selectedCountry">
+      <h2>{{ selectedCountry.name.common }}</h2>
+      <img [src]="selectedCountry.flags.png" />
+    </div>
+
+    <!-- Search by language -->
+    <input 
+      type="text" 
+      placeholder="Search by language (e.g., spanish)" 
+      (input)="onLanguageSearch($event)"
+    />
   `,
   styles: ``,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ChildComponent {
   @Output()  // -> P
-  toParent: EventEmitter<string> = new EventEmitter();
+  toParent = new EventEmitter();
+  @Output() 
+  countrySelected= new EventEmitter<string>();
+  @Output() 
+  languageSearch = new EventEmitter<string>();
 
   @Input() // C <-
   items$!: Observable<any[]>; 
   // TS non-null assertion operator
   // avoids unnecessary null/undefined checks when working with @Input()
+  @Input() 
+  selectedCountry: any; // Input for selected country details
+
+  onCountrySelected(countryName: string): void {
+    this.countrySelected.emit(countryName);
+  }
+
+  onLanguageSearch(event: Event): void {
+    const inputElement = event.target as HTMLInputElement;
+    if (inputElement && inputElement.value.trim()) {
+      this.languageSearch.emit(`lang/${inputElement.value}?fields=name`);
+    }
+  }
 }
