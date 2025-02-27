@@ -23,7 +23,7 @@ import {Observable} from 'rxjs';
       }
     </ul>
     <!-- Display selected country flag -->
-    <div *ngIf="selectedCountry">
+    <div *ngIf="selectedCountry$ | async as selectedCountry">
       <h2>{{ selectedCountry.name.common }}</h2>
       <img [src]="selectedCountry.flags.png" />
     </div>
@@ -33,7 +33,7 @@ import {Observable} from 'rxjs';
     <input 
       type="text" 
       placeholder="Search by language (spanish)" 
-      (input)="onLanguageSearch($event)"
+      (input)="onLanguageSearch($any($event.target).value)"
     />
   `,
   styles: ``,
@@ -42,21 +42,17 @@ import {Observable} from 'rxjs';
 export class ChildComponent {
   @Output() toParent = new EventEmitter();
   @Output() countrySelected= new EventEmitter<string>();
-  @Output() languageSearch = new EventEmitter<string>();
+  @Output() languageSearch = new EventEmitter<Event>();
 
+  // TS non-null assertion operator to avoid unnecessary null/undefined checks when working with @Input()
   @Input() items$!: Observable<any[]>; 
-  // TS non-null assertion operator
-  // avoids unnecessary null/undefined checks when working with @Input()
-  @Input()  selectedCountry: any; // Input for selected country details
+  @Input() selectedCountry$!: Observable<any>;
 
   onCountrySelected(countryName: string): void {
     this.countrySelected.emit(countryName);
   }
 
   onLanguageSearch(event: Event): void {
-    const inputElement = event.target as HTMLInputElement;
-    if (inputElement && inputElement.value.trim()) {
-      this.languageSearch.emit(inputElement.value);
-    }
+    this.languageSearch.emit(event);
   }
 }

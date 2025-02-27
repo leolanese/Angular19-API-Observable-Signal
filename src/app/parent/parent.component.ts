@@ -1,6 +1,6 @@
 import {Component,DestroyRef,inject} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {distinctUntilChanged,map} from 'rxjs';
+import {BehaviorSubject,distinctUntilChanged,map} from 'rxjs';
 import {Observable} from 'rxjs/internal/Observable';
 import {APIService} from '../api.service';
 import {ChildComponent} from '../child/child.component';
@@ -15,7 +15,7 @@ import {ChildComponent} from '../child/child.component';
       (languageSearch)="fetchData('lang/' + $event + '?fields=name')"
       
       [items$]="data$"
-      [selectedCountry]="selectedCountry"
+      [selectedCountry$]="selectedCountry$"
     />
   `,
   styles: [],
@@ -23,9 +23,9 @@ import {ChildComponent} from '../child/child.component';
 })
 export class ParentComponent {
   data$!: Observable<any[]>;  // Observable to hold the list of countries
-  selectedCountry: any; // Holds the selected country details
-  errorMessage: string | null = null; // Holds error messages
-
+  private selectedCountrySubject = new BehaviorSubject<any | null>(null); // Holds the selected country details
+  selectedCountry$ = this.selectedCountrySubject.asObservable();
+  
   apiService = inject(APIService);
   destroyRef = inject(DestroyRef);
 
@@ -48,7 +48,7 @@ export class ParentComponent {
     this.data$.pipe(
       map(data => data[0]) // Extract the first result
     ).subscribe(data => {
-      this.selectedCountry = data;
+      this.selectedCountrySubject.next(data);
     });
   }
 

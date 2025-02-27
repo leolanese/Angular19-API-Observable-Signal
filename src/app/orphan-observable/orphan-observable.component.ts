@@ -36,8 +36,7 @@ import {APIService} from '../api.service';
     <input 
       type="text" 
       placeholder="Search by language (spanish)" 
-      (input)="onLanguageSearch($event)"
-    />
+      (input)="fetchData('lang/' + $any($event.target).value + '?fields=name')" />
   `,
 })
 export class OrphanObservableComponent {
@@ -51,7 +50,7 @@ export class OrphanObservableComponent {
 
   fetchData<T = any>(term: any): void { //  T = any generic with default fallback
     const url = this.apiService.apiUrl + term;
-    
+
     this.items$ = this.apiService
       .get<T[]>(url).pipe(
         distinctUntilChanged(), // emit ONLY, if data has changed from previous emission
@@ -70,10 +69,10 @@ export class OrphanObservableComponent {
     });
   }
 
-  onLanguageSearch(event: Event): void {
-    const inputElement = event.target as HTMLInputElement;
-    if (inputElement && inputElement.value.trim()) {
-      this.fetchData<any>('lang/' + inputElement.value + '?fields=name');
-    }
-  }
+  // onLanguageSearch(event: Event): void {
+  //   const inputElement = event.target as HTMLInputElement;
+  //   if (inputElement && inputElement.value.trim()) {
+  //     this.fetchData<any>('lang/' + inputElement.value + '?fields=name');
+  //   }
+  // }
 }
