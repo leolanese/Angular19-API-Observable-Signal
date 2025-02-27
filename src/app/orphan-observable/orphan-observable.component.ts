@@ -1,7 +1,7 @@
 import {AsyncPipe,CommonModule} from '@angular/common';
 import {Component,DestroyRef,inject} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {BehaviorSubject,distinctUntilChanged,map} from 'rxjs';
+import {BehaviorSubject,distinctUntilChanged,of,switchMap} from 'rxjs';
 import {Observable} from 'rxjs/internal/Observable';
 import {APIService} from '../api.service';
 
@@ -18,7 +18,7 @@ import {APIService} from '../api.service';
     <ul>
       @for (item of items$ | async; track item.name.common) {
         <!-- <pre>{{ items$ | async | json }}</pre> -->
-        <li (click)="onCountrySelected(item.name.common)">
+        <li (click)="selectedCountry(item.name.common)">
           <p>country name: {{ item.name.common }}</p>
         </li>
       } @empty {
@@ -59,14 +59,24 @@ export class OrphanObservableComponent {
   }
 
   // Fetch details of a selected country (name and flag)
-  onCountrySelected(countryName: string): void {
-    this.fetchData<any>('name/' + countryName + '?fields=name,flags');
+  selectedCountry(countryName: string): void {
+    const url = `${this.apiService.apiUrl}name/${countryName}?fields=name,flags`;
 
-    this.items$.pipe(
-      map(data => data[0]) // Extract the first result
-    ).subscribe(data => {
-      this.selectedCountrySubject.next(data);
-    });
+    this.items$ = this.apiService.get<any[]>(url).pipe(
+      // switchMap Works Well for Clicks
+      // `switchMap` to handle API calls properly and update selectedCountrySubject only when new data arrives
+      // switchMap does:
+      // It switches to a new request.
+      // It cancels the previous one.
+      // WIN? Ensures the latest click always wins. Keep UI/UX  responsive and accurate.
+      switchMap(data => {
+        const country = data?.[0] || null; // Ensure we get a valid object
+        this.selectedCountrySubject.next(country);
+        return of(data);
+      }),
+      distinctUntilChanged(),
+      takeUntilDestroyed(this.destroyRef)
+    );
   }
 
 }
