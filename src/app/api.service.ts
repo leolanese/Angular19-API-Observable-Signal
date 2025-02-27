@@ -5,7 +5,7 @@ import {Observable,catchError,debounceTime,of,shareReplay,throwError} from 'rxjs
 @Injectable({ providedIn: 'root'})
 export class APIService {
   // constructor-based dependency injection
-  http = inject(HttpClient);
+  private http = inject(HttpClient);
   apiUrl = `https://restcountries.com/v3.1/`;
 
   // Generic Type Parameter <T>

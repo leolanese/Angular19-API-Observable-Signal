@@ -40,7 +40,7 @@ import {APIService} from '../api.service';
   `,
 })
 export class OrphanObservableComponent {
-  // just use Subjects/next() not plain variables
+  // just use Subjects/next() NOT plain variables
   items$!: Observable<any[]>
   private selectedCountrySubject = new BehaviorSubject<any | null>(null); // Holds the selected country details
   selectedCountry$ = this.selectedCountrySubject.asObservable();
@@ -69,10 +69,4 @@ export class OrphanObservableComponent {
     });
   }
 
-  // onLanguageSearch(event: Event): void {
-  //   const inputElement = event.target as HTMLInputElement;
-  //   if (inputElement && inputElement.value.trim()) {
-  //     this.fetchData<any>('lang/' + inputElement.value + '?fields=name');
-  //   }
-  // }
 }
