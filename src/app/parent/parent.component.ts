@@ -1,9 +1,9 @@
-import { Component, DestroyRef, inject } from '@angular/core';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { distinctUntilChanged, map } from 'rxjs';
-import { Observable } from 'rxjs/internal/Observable';
-import { APIService } from '../api.service';
-import { ChildComponent } from '../child/child.component';
+import {Component,DestroyRef,inject} from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {distinctUntilChanged,map} from 'rxjs';
+import {Observable} from 'rxjs/internal/Observable';
+import {APIService} from '../api.service';
+import {ChildComponent} from '../child/child.component';
 
 @Component({
   selector: 'app-parent',
@@ -12,13 +12,13 @@ import { ChildComponent } from '../child/child.component';
     <app-child 
       (toParent)="fetchData('independent?fields=name')"  
       (countrySelected)="onCountrySelected($event)"
-      (languageSearch)="fetchData($event)"
+      (languageSearch)="fetchData('lang/' + $event + '?fields=name')"
       
       [items$]="data$"
       [selectedCountry]="selectedCountry"
     />
   `,
-  styles: ``,
+  styles: [],
   standalone: true,
 })
 export class ParentComponent {

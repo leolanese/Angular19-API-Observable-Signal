@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable, inject } from '@angular/core';
-import { Observable, catchError, debounceTime, of, shareReplay, throwError } from 'rxjs';
+import {HttpClient} from '@angular/common/http';
+import {Injectable,inject} from '@angular/core';
+import {Observable,catchError,debounceTime,of,shareReplay,throwError} from 'rxjs';
 
 @Injectable({ providedIn: 'root'})
 export class APIService {
@@ -12,7 +12,7 @@ export class APIService {
   // T can replaced with: user, photos, comments, etc
   // The method returns an Observable of type T
   get<T>(url: string): Observable<T[]> {
-    console.log('Fetching data from URL:', `${this.apiUrl}${url}`);
+    console.log('Fetching data from URL:', `${url}`);
 
     return this.http.get<T[]>(url).pipe(
       debounceTime(300),
