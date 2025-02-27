@@ -1,7 +1,7 @@
 import {AsyncPipe,CommonModule} from '@angular/common';
 import {Component,DestroyRef,inject} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {distinctUntilChanged,map} from 'rxjs';
+import {BehaviorSubject,distinctUntilChanged,map} from 'rxjs';
 import {Observable} from 'rxjs/internal/Observable';
 import {APIService} from '../api.service';
 
@@ -26,7 +26,7 @@ import {APIService} from '../api.service';
       }
     </ul>
     <!-- Display selected country flag -->
-    <div *ngIf="selectedCountry">
+    <div *ngIf="selectedCountry$ | async as selectedCountry">
       <h2>{{ selectedCountry.name.common }}</h2>
       <img [src]="selectedCountry.flags.png" />
     </div>
@@ -41,14 +41,17 @@ import {APIService} from '../api.service';
   `,
 })
 export class OrphanObservableComponent {
-  items$!: Observable<any[]>;
-  selectedCountry: any; // Holds the selected country details
+  // just use Subjects/next() not plain variables
+  items$!: Observable<any[]>
+  private selectedCountrySubject = new BehaviorSubject<any | null>(null); // Holds the selected country details
+  selectedCountry$ = this.selectedCountrySubject.asObservable();
 
   private apiService = inject(APIService);
-  destroyRef = inject(DestroyRef);
+  private destroyRef = inject(DestroyRef);
 
   fetchData<T = any>(term: any): void { //  T = any generic with default fallback
-    const url = `${this.apiService.apiUrl}${term}`;
+    const url = this.apiService.apiUrl + term;
+    
     this.items$ = this.apiService
       .get<T[]>(url).pipe(
         distinctUntilChanged(), // emit ONLY, if data has changed from previous emission
@@ -58,12 +61,12 @@ export class OrphanObservableComponent {
 
   // Fetch details of a selected country (name and flag)
   onCountrySelected(countryName: string): void {
-    this.fetchData<any>(`name/${countryName}?fields=name,flags`);
+    this.fetchData<any>('name/' + countryName + '?fields=name,flags');
 
     this.items$.pipe(
       map(data => data[0]) // Extract the first result
     ).subscribe(data => {
-      this.selectedCountry = data;
+      this.selectedCountrySubject.next(data);
     });
   }
 
