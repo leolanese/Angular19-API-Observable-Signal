@@ -1,5 +1,5 @@
 import {HttpClient} from '@angular/common/http';
-import {Injectable,inject} from '@angular/core';
+import {Injectable,inject,signal} from '@angular/core';
 import {Observable,catchError,debounceTime,of,shareReplay,throwError} from 'rxjs';
 
 @Injectable({ providedIn: 'root'})
@@ -7,6 +7,9 @@ export class APIService {
   // constructor-based dependency injection
   private http = inject(HttpClient);
   apiUrl = `https://restcountries.com/v3.1/`;
+
+  // Define a Signal to hold the API response
+  private data = signal<any[]>([]);
 
   // Generic Type Parameter <T>
   // T can replaced with: user, photos, comments, etc
@@ -27,5 +30,19 @@ export class APIService {
       })
     );
   }
+
+  //TODO: hold the payload in a signal
+  getSignalData(url: string){
+    this.http.get<any[]>('https://jsonplaceholder.typicode.com/posts')
+      .subscribe({
+        next: (response) => {
+          this.data.set(response); // Update the Signal with the API response
+        },
+        error: (err) => {
+          console.error('Error fetching data:', err);
+        },
+      });
+  }
+
 
 }
