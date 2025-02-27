@@ -1,16 +1,22 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable, inject } from '@angular/core';
-import { Observable, catchError, debounceTime, of, shareReplay, throwError } from 'rxjs';
+import { computed, inject, Injectable, signal } from '@angular/core';
+import { catchError, debounceTime, Observable, of, shareReplay, throwError } from 'rxjs';
 
 @Injectable({ providedIn: 'root'})
-export class APIService {
+export class APISignalService {
   // constructor-based dependency injection
   private http = inject(HttpClient);
-  apiUrl = `https://restcountries.com/v3.1/`;
 
-  // Generic Type Parameter <T>
-  // T can replaced with: user, photos, comments, etc
-  // The method returns an Observable of type T
+  items = signal<any[]>([]);
+  private data = signal<any | null>(null);
+
+  // Expose Signals as computed properties for read-only access
+  readonly items$ = computed(() => this.items());
+  readonly data$ = computed(() => this.data());
+
+  apiUrl = 'https://restcountries.com/v3.1/';
+
+
   get<T>(url: string): Observable<T[]> {
     console.log('Fetching data from URL:', `${url}`);
 
@@ -27,5 +33,6 @@ export class APIService {
       })
     );
   }
+
 
 }

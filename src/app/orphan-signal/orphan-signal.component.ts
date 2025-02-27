@@ -1,8 +1,8 @@
-import {CommonModule} from '@angular/common';
-import {Component,DestroyRef,inject,signal} from '@angular/core';
-import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {distinctUntilChanged,map} from 'rxjs';
-import {APIService} from '../api.service';
+import { CommonModule } from '@angular/common';
+import { Component, DestroyRef, inject, signal } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { distinctUntilChanged, map } from 'rxjs';
+import { APISignalService } from './api-signal.service';
 
 @Component({
   selector: 'app-orphan-signal',
@@ -38,13 +38,13 @@ export class OrphanSignalComponent {
   items = signal<any[]>([]);
   selectedCountry = signal<any | null>(null);
 
-  private apiService = inject(APIService);
+  private apiSignalService = inject(APISignalService);
   private destroyRef = inject(DestroyRef);
 
   fetchData<T = any>(term: string): void {
-    const url = `${this.apiService.apiUrl}${term}`;
+    const url = `${this.apiSignalService.apiUrl}${term}`;
 
-    this.apiService.get<T[]>(url).pipe(
+    this.apiSignalService.get<T[]>(url).pipe(
       distinctUntilChanged(),
       takeUntilDestroyed(this.destroyRef)
     ).subscribe(data => {
@@ -59,9 +59,9 @@ export class OrphanSignalComponent {
   // No need for cancellation because a new API request doesn’t leave previous requests hanging.
   // Each click directly updates the Signal without any need for operators like switchMap.
   selectCountry(countryName: string): void {
-    const url = `${this.apiService.apiUrl}name/${countryName}?fields=name,flags`;
+    const url = `${this.apiSignalService.apiUrl}name/${countryName}?fields=name,flags`;
 
-    this.apiService.get<any[]>(url).pipe(
+    this.apiSignalService.get<any[]>(url).pipe(
       map(data => data[0]),
       takeUntilDestroyed(this.destroyRef)
     ).subscribe(data => {
