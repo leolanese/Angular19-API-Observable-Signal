@@ -33,9 +33,8 @@ export class ParentComponent {
   // <T> is a generic placeholder
   // here the 'lance shape generic': <T>(term:string) will be replace by <user>
   fetchData<T = any>(term: any): void { //  T = any generic with default fallback
-    const url = `${this.apiService.apiUrl}${term}`;
     this.data$ = this.apiService
-      .get<T[]>(url).pipe(
+      .get<T[]>(term).pipe(
         distinctUntilChanged(), // emit ONLY, if data has changed from previous emission
         takeUntilDestroyed(this.destroyRef) // Clean up subscriptions
       );

@@ -55,7 +55,9 @@ export class OrphanSignalComponent {
   onCountrySelected(countryName: string): void {
     this.fetchData<any>(`name/${countryName}?fields=name,flags`);
 
-    this.apiService.get<any[]>(`${this.apiService.apiUrl}name/${countryName}?fields=name,flags`).pipe(
+    const url = `${this.apiService.apiUrl}name/${countryName}?fields=name,flags`;
+
+    this.apiService.get<any[]>(url).pipe(
       map(data => data[0]),
       takeUntilDestroyed(this.destroyRef)
     ).subscribe(data => {
