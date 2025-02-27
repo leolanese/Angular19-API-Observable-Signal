@@ -54,7 +54,7 @@ export class ChildComponent {
   onLanguageSearch(event: Event): void {
     const inputElement = event.target as HTMLInputElement;
     if (inputElement && inputElement.value.trim()) {
-      this.languageSearch.emit(`lang/${inputElement.value}?fields=name`);
+      this.languageSearch.emit(`${inputElement.value}`);
     }
   }
 }
