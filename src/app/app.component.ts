@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {RouterOutlet} from '@angular/router';
 import {OrphanObservableComponent} from './orphan-observable/orphan-observable.component';
+import {OrphanSignalComponent} from './orphan-signal/orphan-signal.component';
 import {ParentComponent} from './parent/parent.component';
 
 @Component({
@@ -8,7 +9,8 @@ import {ParentComponent} from './parent/parent.component';
   imports: [
     RouterOutlet,
     ParentComponent,
-    OrphanObservableComponent
+    OrphanObservableComponent,
+    OrphanSignalComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
