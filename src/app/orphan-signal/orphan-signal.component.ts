@@ -48,6 +48,7 @@ export class OrphanSignalComponent {
       distinctUntilChanged(),
       takeUntilDestroyed(this.destroyRef)
     ).subscribe(data => {
+      // Update the Signal with the new data
       this.items.set(data);
     });
   }
@@ -64,6 +65,7 @@ export class OrphanSignalComponent {
       map(data => data[0]),
       takeUntilDestroyed(this.destroyRef)
     ).subscribe(data => {
+      // Update the Signal with the selected country
       this.selectedCountry.set(data);
     });
   }
