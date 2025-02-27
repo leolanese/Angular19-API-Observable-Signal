@@ -44,7 +44,12 @@ export class ParentComponent {
   // Fetch details of a selected country (name and flag)
   selectedCountry(countryName: string): void {
     this.data$ = this.apiService.get<any[]>(`${this.apiService.apiUrl}name/${countryName}?fields=name,flags`).pipe(
-      // switchMap to handle API calls properly and update selectedCountrySubject only when new data arrives
+      // switchMap Works Well for Clicks
+      // `switchMap` to handle API calls properly and update selectedCountrySubject only when new data arrives
+      // switchMap does:
+      // It switches to a new request.
+      // It cancels the previous one.
+      // WIN? Ensures the latest click always wins. Keep UI/UX  responsive and accurate.
       switchMap(data => {
         const country = data?.[0] || null;  // Ensure we get a valid object
         this.selectedCountrySubject.next(country);

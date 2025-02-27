@@ -50,11 +50,15 @@ export class OrphanSignalComponent {
     ).subscribe(data => {
       this.items.set(data);
     });
+    
   }
 
+  // Don't Need switchMap:
+  // Signals hold state (not a stream of events like an Observable).
+  // selectedCountry.set(data) overwrites the previous value immediately.
+  // No need for cancellation because a new API request doesn’t leave previous requests hanging.
+  // Each click directly updates the Signal without any need for operators like switchMap.
   selectCountry(countryName: string): void {
-    // this.fetchData<any>(`name/${countryName}?fields=name,flags`);
-
     const url = `${this.apiService.apiUrl}name/${countryName}?fields=name,flags`;
 
     this.apiService.get<any[]>(url).pipe(
