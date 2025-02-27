@@ -7,18 +7,7 @@ import { Observable } from 'rxjs';
   imports: [CommonModule, AsyncPipe],
   standalone: true,
   template: `
-    <!-- List of countries -->
     <button (click)="toParent.emit()">Fetch AC1</button>
-    <ul>
-      @for (item of items$ | async; let index = $index; track index) {
-        <!-- <pre>{{ items$ | async | json }}</pre> -->
-        <li (click)="onCountrySelected(item.name.common)">
-          <p>country name: {{ item.name.common }}</p>
-        </li>
-      } @empty {
-          <li>Loading...</li>
-      }
-    </ul>
 
     <!-- Display selected country flag -->
     <div *ngIf="selectedCountry">
@@ -29,27 +18,34 @@ import { Observable } from 'rxjs';
     <!-- Search by language -->
     <input 
       type="text" 
-      placeholder="Search by language (e.g., spanish)" 
+      placeholder="Search by language (spanish)" 
       (input)="onLanguageSearch($event)"
     />
+
+    <!-- Displays  -->
+    <ul>
+      @for (item of items$ | async; track item.name.common) {
+        <!-- <pre>{{ items$ | async | json }}</pre> -->
+        <li (click)="onCountrySelected(item.name.common)">
+          <p>country name: {{ item.name.common }}</p>
+        </li>
+      } @empty {
+          <li>Loading...</li>
+      }
+    </ul>
   `,
   styles: ``,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ChildComponent {
-  @Output()  // -> P
-  toParent = new EventEmitter();
-  @Output() 
-  countrySelected= new EventEmitter<string>();
-  @Output() 
-  languageSearch = new EventEmitter<string>();
+  @Output() toParent = new EventEmitter();
+  @Output() countrySelected= new EventEmitter<string>();
+  @Output() languageSearch = new EventEmitter<string>();
 
-  @Input() // C <-
-  items$!: Observable<any[]>; 
+  @Input() items$!: Observable<any[]>; 
   // TS non-null assertion operator
   // avoids unnecessary null/undefined checks when working with @Input()
-  @Input() 
-  selectedCountry: any; // Input for selected country details
+  @Input()  selectedCountry: any; // Input for selected country details
 
   onCountrySelected(countryName: string): void {
     this.countrySelected.emit(countryName);
