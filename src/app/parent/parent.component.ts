@@ -22,11 +22,11 @@ import {ChildComponent} from '../child/child.component';
   standalone: true,
 })
 export class ParentComponent {
-  data$!: Observable<any[]>  // Observable to hold the list of countries
+  data$!: Observable<any[]>;  // Observable to hold the list of countries
   selectedCountry: any; // Holds the selected country details
   errorMessage: string | null = null; // Holds error messages
 
-  apiService = inject(APIService)
+  apiService = inject(APIService);
   destroyRef = inject(DestroyRef);
 
   // smart component fully reusable with generic type

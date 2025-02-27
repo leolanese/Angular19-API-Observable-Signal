@@ -1,12 +1,14 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { ParentComponent } from './parent/parent.component';
+import {Component} from '@angular/core';
+import {RouterOutlet} from '@angular/router';
+import {OrphanObservableComponent} from './orphan-observable/orphan-observable.component';
+import {ParentComponent} from './parent/parent.component';
 
 @Component({
   selector: 'app-root',
   imports: [
     RouterOutlet,
-    ParentComponent
+    ParentComponent,
+    OrphanObservableComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
