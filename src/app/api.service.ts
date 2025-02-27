@@ -1,6 +1,6 @@
-import {HttpClient} from '@angular/common/http';
-import {Injectable,inject,signal} from '@angular/core';
-import {Observable,catchError,debounceTime,of,shareReplay,throwError} from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { Injectable, computed, inject, signal } from '@angular/core';
+import { Observable, catchError, debounceTime, of, shareReplay, throwError } from 'rxjs';
 
 @Injectable({ providedIn: 'root'})
 export class APIService {
@@ -10,6 +10,9 @@ export class APIService {
 
   // Define a Signal to hold the API response
   private data = signal<any[]>([]);
+
+  // Define a computed property for derived state (optional)
+  readonly data$ = computed(() => this.data());
 
   // Generic Type Parameter <T>
   // T can replaced with: user, photos, comments, etc
@@ -33,7 +36,9 @@ export class APIService {
 
   //TODO: hold the payload in a signal
   getSignalData(url: string){
-    this.http.get<any[]>('https://jsonplaceholder.typicode.com/posts')
+    console.log('Fetching data from URL:', `${url}`);
+
+    this.http.get<any[]>(url)
       .subscribe({
         next: (response) => {
           this.data.set(response); // Update the Signal with the API response
@@ -43,6 +48,5 @@ export class APIService {
         },
       });
   }
-
 
 }

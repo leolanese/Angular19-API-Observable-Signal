@@ -1,8 +1,9 @@
-import {Component} from '@angular/core';
-import {RouterOutlet} from '@angular/router';
-import {OrphanObservableComponent} from './orphan-observable/orphan-observable.component';
-import {OrphanSignalComponent} from './orphan-signal/orphan-signal.component';
-import {ParentComponent} from './parent/parent.component';
+import { Component } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
+import { OrphanObservableComponent } from './orphan-observable/orphan-observable.component';
+import { OrphanSignalPayloadComponent } from './orphan-signal-payload/orphan-signal-payload.component';
+import { OrphanSignalComponent } from './orphan-signal/orphan-signal.component';
+import { ParentComponent } from './parent/parent.component';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,8 @@ import {ParentComponent} from './parent/parent.component';
     RouterOutlet,
     ParentComponent,
     OrphanObservableComponent,
-    OrphanSignalComponent
+    OrphanSignalComponent,
+    OrphanSignalPayloadComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
