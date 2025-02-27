@@ -44,7 +44,7 @@ export class OrphanObservableComponent {
   items$!: Observable<any[]>;
   selectedCountry: any; // Holds the selected country details
 
-  apiService = inject(APIService);
+  private apiService = inject(APIService);
   destroyRef = inject(DestroyRef);
 
   fetchData<T = any>(term: any): void { //  T = any generic with default fallback
