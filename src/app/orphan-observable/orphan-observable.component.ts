@@ -1,9 +1,9 @@
-import {AsyncPipe,CommonModule} from '@angular/common';
-import {Component,DestroyRef,inject} from '@angular/core';
-import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {BehaviorSubject,distinctUntilChanged,of,switchMap} from 'rxjs';
-import {Observable} from 'rxjs/internal/Observable';
-import {APIService} from '../api.service';
+import { AsyncPipe, CommonModule } from '@angular/common';
+import { Component, DestroyRef, inject } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { BehaviorSubject, distinctUntilChanged, of, switchMap } from 'rxjs';
+import { Observable } from 'rxjs/internal/Observable';
+import { APIService } from '../SoC/api.service';
 
 @Component({
   selector: 'app-orphan-observable',
