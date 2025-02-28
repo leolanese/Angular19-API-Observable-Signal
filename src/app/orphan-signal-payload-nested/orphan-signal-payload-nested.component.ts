@@ -1,6 +1,6 @@
-import { CommonModule } from '@angular/common';
-import { Component, inject } from '@angular/core';
-import { APISignalService } from './api-signal.service';
+import {CommonModule} from '@angular/common';
+import {Component,inject} from '@angular/core';
+import {APISignalService} from './api-signal.service';
 
 @Component({
   selector: 'app-orphan-signal-payload-nested',
@@ -9,10 +9,12 @@ import { APISignalService } from './api-signal.service';
   template: `
     <p>AC1) Get all country names and display on the page:</p>
     <button (click)="fetchData('independent?fields=name')">Fetch AC1</button>
-    <div *ngIf="data(); let selectedCountry">
-      <h2>{{ selectedCountry.name.common }}</h2>
-      <img [src]="selectedCountry.flags.png" alt="{{ selectedCountry.name.common }} flag" />
-    </div>
+    @if (data() as selectedCountry) {
+      <div>
+        <h2>{{ selectedCountry.name.common }}</h2>
+        <img [src]="selectedCountry.flags.png" alt="{{ selectedCountry.name.common }} flag" />
+      </div>
+    }
     
     <p>AC2) Select a country and Show the flag:</p>
     <ul>
@@ -20,8 +22,6 @@ import { APISignalService } from './api-signal.service';
         <li (click)="selectCountry(item.name.common)">
           <p>Country name: {{ item.name.common }}</p>
         </li>
-      } @empty {
-        <li>Loading...</li>
       }
     </ul>
 

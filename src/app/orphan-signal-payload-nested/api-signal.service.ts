@@ -1,8 +1,8 @@
-import { HttpClient } from '@angular/common/http';
-import { inject, Injectable, signal } from '@angular/core';
-import { catchError, debounceTime, map, of, shareReplay, throwError } from 'rxjs';
+import {HttpClient} from '@angular/common/http';
+import {inject,Injectable,signal} from '@angular/core';
+import {catchError,debounceTime,map,of,shareReplay,throwError} from 'rxjs';
 
-@Injectable({ providedIn: 'root' }) // ✅ Provided via Angular's DI system
+@Injectable({ providedIn: 'root' })
 export class APISignalService {
   private http = inject(HttpClient);
 

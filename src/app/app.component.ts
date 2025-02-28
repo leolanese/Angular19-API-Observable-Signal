@@ -20,16 +20,16 @@ import {ParentComponent} from './SoC/parent.component';
   template: `
     <nav>
       <a routerLink="">#️⃣ Root</a>
-      <a routerLink="/SoC">1️⃣ SoC Parent <-> Child API Observable</a>
+      <a routerLink="/SoC">1️⃣ SoC Parent <-> Child API Observable API Nested</a>
       <a routerLink="/orphan-observable">2️⃣ Orphan Observable</a>
       <a routerLink="/orphan-signal">3️⃣ Orphan Signal</a>
-      <a routerLink="/orphan-signal-payload-simple">4️⃣ Signal Payload Simple</a>
-      <a routerLink="/orphan-signal-payload-nested">5️⃣ Signal Payload Nested</a>
+      <a routerLink="/orphan-signal-payload-simple">4️⃣ Orphan Signal Payload API Simple</a>
+      <a routerLink="/orphan-signal-payload-nested">5️⃣ Orphan Signal Payload API Nested</a>
     </nav>
     <router-outlet></router-outlet>
   `,
   styles: [`a {font-size: 1.5em}`],
 })
 export class AppComponent {
-  
+
 }
