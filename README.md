@@ -21,14 +21,15 @@ https://restcountries.com/v3.1/lang/spanish?fields=name
 ```js
 src/
 └── app/
-    │   ├── child/
-    │   │       ├── child.component.ts
-    │   │       └── child.component.spec.ts
-    │   └── parent/
-    │           ├── parent.component.ts
-    │           └── parent.component.spec.ts
-    ├── api.service.ts
-    └── http.interceptor.ts
+     ├── SoC/
+     ├── orphan-observable/
+     ├── orphan-signal/
+     ├── orphan-signal-payload-simple/
+     ├── orphan-signal-payload-nested/
+     |
+     ├── app.component.ts
+     ├── auth.interceptor.ts
+     └── http.interceptor.ts
 ```
 
 ```js

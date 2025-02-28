@@ -1,9 +1,9 @@
-import { Component, DestroyRef, inject } from '@angular/core';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { BehaviorSubject, distinctUntilChanged, of, switchMap } from 'rxjs';
-import { Observable } from 'rxjs/internal/Observable';
-import { APIService } from '../api.service';
-import { ChildComponent } from '../child/child.component';
+import {Component,DestroyRef,inject} from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {BehaviorSubject,distinctUntilChanged,of,switchMap} from 'rxjs';
+import {Observable} from 'rxjs/internal/Observable';
+import {APIService} from './api.service';
+import {ChildComponent} from './child.component';
 
 @Component({
   selector: 'app-parent',
