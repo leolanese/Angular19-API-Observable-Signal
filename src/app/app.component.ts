@@ -18,6 +18,7 @@ import {ParentComponent} from './SoC/parent.component';
     OrphanSignalPayloadNestedComponent
   ],
   template: `
+    <h1>{{ title }}</h1>
     <nav>
       <a routerLink="">#️⃣ Root</a>
       <a routerLink="/SoC">1️⃣ SoC Parent <-> Child API Observable API Nested</a>
@@ -28,8 +29,8 @@ import {ParentComponent} from './SoC/parent.component';
     </nav>
     <router-outlet></router-outlet>
   `,
-  styles: [`a {font-size: 1.5em}`],
+  styles: [`a {font-size: 2em; display: block;}`],
 })
 export class AppComponent {
-
+  title = 'Angular 19, API request using Observable and Signal';
 }
