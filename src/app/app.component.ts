@@ -4,7 +4,8 @@ import {OrphanObservableComponent} from './orphan-observable/orphan-observable.c
 import {OrphanSignalPayloadNestedComponent} from './orphan-signal-payload-nested/orphan-signal-payload-nested.component';
 import {OrphanSignalPayloadSimpleComponent} from './orphan-signal-payload-simple/orphan-signal-payload-simple.component';
 import {OrphanSignalComponent} from './orphan-signal/orphan-signal.component';
-import {ParentComponent} from './SoC/parent.component';
+import {ParentComponent} from './SoC/input-output/parent.component';
+import {ParentInputSignalComponent} from './SoC/input-signal/parent-input-signal.component';
 
 @Component({
   selector: 'app-root',
@@ -12,6 +13,7 @@ import {ParentComponent} from './SoC/parent.component';
     RouterOutlet,
     RouterModule,
     ParentComponent,
+    ParentInputSignalComponent,
     OrphanObservableComponent,
     OrphanSignalComponent,
     OrphanSignalPayloadSimpleComponent,
@@ -21,7 +23,8 @@ import {ParentComponent} from './SoC/parent.component';
     <h1>{{ title }}</h1>
     <nav>
       <a routerLink="">#️⃣ Root</a>
-      <a routerLink="/SoC">1️⃣ SoC Parent <-> Child API Observable API Nested</a>
+      <a routerLink="/SoC/input-output">1️⃣ SoC Parent <-> Child API Observable API Nested</a>
+      <a routerLink="/SoC/input-signal">1️⃣ SoC Parent <-> Child, input-signal, API Observable API Nested</a>
       <a routerLink="/orphan-observable">2️⃣ Orphan Observable</a>
       <a routerLink="/orphan-signal">3️⃣ Orphan Signal</a>
       <a routerLink="/orphan-signal-payload-simple">4️⃣ Orphan Signal Payload API Simple</a>
