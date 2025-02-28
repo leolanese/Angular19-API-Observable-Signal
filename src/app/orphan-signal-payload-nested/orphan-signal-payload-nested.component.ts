@@ -9,10 +9,11 @@ import {APISignalService} from './api-signal.service';
   template: `
     <p>AC1) Get all country names and display on the page:</p>
     <button (click)="fetchData('independent?fields=name')">Fetch AC1</button>
-    @if (data() as selectedCountry) {
+
+    @if (apiSignalService.data(); as selectedCountry) {
       <div>
         <h2>{{ selectedCountry.name.common }}</h2>
-        <img [src]="selectedCountry.flags.png" alt="{{ selectedCountry.name.common }} flag" />
+        <img [src]="selectedCountry.flags.png" alt="Flag of {{ selectedCountry.name.common }}" />
       </div>
     }
     
@@ -34,9 +35,6 @@ import {APISignalService} from './api-signal.service';
 })
 export class OrphanSignalPayloadNestedComponent {
   apiSignalService = inject(APISignalService);
-
-  // Expose the Signal from the service
-  data = this.apiSignalService.data;
 
   fetchData(term: string): void {
     this.apiSignalService.fetchData(term);

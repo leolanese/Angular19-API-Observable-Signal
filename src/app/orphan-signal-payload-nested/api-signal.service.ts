@@ -6,7 +6,7 @@ import {catchError,debounceTime,map,of,shareReplay,throwError} from 'rxjs';
 export class APISignalService {
   private http = inject(HttpClient);
 
-  // Signals to hold state
+  // Signals to hold state `list of countries` and `single selected country`
   items = signal<any[]>([]);
   data = signal<any | null>(null);
 
@@ -14,9 +14,10 @@ export class APISignalService {
 
   fetchData<T = any>(term: string): void {
     const url = `${this.apiUrl}${term}`;
+
     this.http.get<T[]>(url).pipe(
-      debounceTime(300), 
-      shareReplay(1), 
+      debounceTime(300), // Debounce API calls
+      shareReplay(1), // Cache the response for subsequent subscribers
       catchError( error => {
         if (error.status === 404) {
           console.warn(`Resource not found for URL: ${url}`);
@@ -25,13 +26,19 @@ export class APISignalService {
         console.error('Error fetching data:', error);
         return throwError(() => new Error('Failed to fetch data.'));
       })
-    ).subscribe(data => {
-      this.items.set(data); // Update the Signal with the fetched data
+    ).subscribe({
+      next: (data) => {
+        this.items.set(data); // Update the Signal with the fetched data
+      },
+      error: () => {
+        this.items.set([]); // Reset the Signal on error
+      },
     });
   }
 
   selectCountry(countryName: string): void {
     const url = `${this.apiUrl}name/${countryName}?fields=name,flags`;
+
     this.http.get<any[]>(url).pipe(
       map(data => data[0]),
       catchError( error => {
@@ -42,8 +49,13 @@ export class APISignalService {
         console.error('Error fetching data:', error);
         return throwError(() => new Error('Failed to fetch data.'));
       })
-    ).subscribe(data => {
-      this.data.set(data); // Update the Signal with the selected country
+    ).subscribe({
+      next: (data) => {
+        this.data.set(data); // Update the Signal with the fetched data
+      },
+      error: () => {
+        this.items.set([]); // Reset the Signal on error
+      },
     });
   }
 }
