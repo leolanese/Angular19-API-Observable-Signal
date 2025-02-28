@@ -23,20 +23,15 @@ export class APISignalService {
           console.warn(`Resource not found for URL: ${url}`);
           return of([]);  // Return empty array or fallback data on 404
         }
-        console.error('Error fetching data:', error);
         return throwError(() => new Error('Failed to fetch data.'));
       })
     ).subscribe({
-      next: (data) => {
-        this.items.set(data); // Update the Signal with the fetched data
-      },
-      error: () => {
-        this.items.set([]); // Reset the Signal on error
-      },
+      next: (data) => this.items.set(data), // Update the Signal with the fetched data
+      error: () => this.items.set([]) // Reset Signal on error
     });
   }
 
-  selectCountry(countryName: string): void {
+  selectCountry(countryName: string): void | undefined {
     const url = `${this.apiUrl}name/${countryName}?fields=name,flags`;
 
     this.http.get<any[]>(url).pipe(
@@ -46,16 +41,11 @@ export class APISignalService {
           console.warn(`Resource not found for URL: ${url}`);
           return of([]);  // Return empty array or fallback data on 404
         }
-        console.error('Error fetching data:', error);
         return throwError(() => new Error('Failed to fetch data.'));
       })
     ).subscribe({
-      next: (data) => {
-        this.data.set(data); // Update the Signal with the fetched data
-      },
-      error: () => {
-        this.items.set([]); // Reset the Signal on error
-      },
+      next: (data) => this.data.set(data), // Update the Signal with the fetched data
+      error: () => this.items.set([]) // Reset the Signal on error
     });
   }
 }

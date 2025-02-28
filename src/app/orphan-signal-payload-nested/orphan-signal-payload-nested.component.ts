@@ -8,19 +8,19 @@ import {APISignalService} from './api-signal.service';
   imports: [CommonModule],
   template: `
     <p>AC1) Get all country names and display on the page:</p>
-    <button (click)="fetchData('independent?fields=name')">Fetch AC1</button>
+    <button (click)="apiSignalService.fetchData('independent?fields=name')">Fetch AC1</button>
 
     @if (apiSignalService.data(); as selectedCountry) {
       <div>
-        <h2>{{ selectedCountry.name.common }}</h2>
-        <img [src]="selectedCountry.flags.png" alt="Flag of {{ selectedCountry.name.common }}" />
+        <h2>{{ selectedCountry.name?.common }}</h2>
+        <img [src]="selectedCountry.flags?.png"  />
       </div>
     }
     
     <p>AC2) Select a country and Show the flag:</p>
     <ul>
       @for (item of apiSignalService.items(); track item.name.common) {
-        <li (click)="selectCountry(item.name.common)">
+        <li (click)="apiSignalService.selectCountry(item.name.common)">
           <p>Country name: {{ item.name.common }}</p>
         </li>
       }
@@ -30,17 +30,9 @@ import {APISignalService} from './api-signal.service';
     <input
       type="text"
       placeholder="Search by language (spanish)"
-      (input)="fetchData('lang/' + $any($event.target).value + '?fields=name')" />
+      (input)="apiSignalService.fetchData('lang/' + $any($event.target).value + '?fields=name')" />
   `,
 })
 export class OrphanSignalPayloadNestedComponent {
   apiSignalService = inject(APISignalService);
-
-  fetchData(term: string): void {
-    this.apiSignalService.fetchData(term);
-  }
-
-  selectCountry(countryName: string): void {
-    this.apiSignalService.selectCountry(countryName);
-  }
 }
