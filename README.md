@@ -22,6 +22,7 @@ https://restcountries.com/v3.1/lang/spanish?fields=name
 src/
 └── app/
      ├── SoC/ @Input()/@Output()
+     
      ├── orphan-observable/
      ├── orphan-signal/
      ├── orphan-signal-payload-simple/
