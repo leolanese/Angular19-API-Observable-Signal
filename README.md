@@ -1,6 +1,6 @@
-# Test
+# Angular (19+) Observable and Signal payload using API requests
 
-## AC's
+## Goals AC's
 
 1.	Get all country names and display on the page: 
 https://restcountries.com/v3.1/independent?fields=name
@@ -11,9 +11,6 @@ https://restcountries.com/v3.1/name/Grenada?fields=name,flags
 3.	Search countries by language: 
 https://restcountries.com/v3.1/lang/spanish?fields=name  
 
-
-! - These tasks are nested tasks, and depends on each other payload, that a trick.
-
 ---
 
 ## Solution Arquitecture
@@ -21,12 +18,13 @@ https://restcountries.com/v3.1/lang/spanish?fields=name
 ```js
 src/
 └── app/
-     ├── SoC/ @Input()/@Output()
-     
-     ├── orphan-observable/
-     ├── orphan-signal/
-     ├── orphan-signal-payload-simple/
-     ├── orphan-signal-payload-nested/
+     ├── SoC/
+          └── input/output   = Separation of Concern using Parent and Child, @Input()/@Output()
+          └── input/output   = Separation of Concern using Parent and Child, input signal/@Output()  
+     ├── orphan-observable/  = single Component, managing API request using Observables
+     ├── orphan-signal/      = single Component, managing API request using Signals
+     ├── orphan-signal-payload-simple/  = single Component, managing API request using Signal
+     ├── orphan-signal-payload-nested/  = single Component, managing complex API request using Signal
      |
      ├── app.component.ts
      ├── auth.interceptor.ts
