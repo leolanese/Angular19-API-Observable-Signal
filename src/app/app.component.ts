@@ -22,8 +22,8 @@ import {ParentInputSignalComponent} from './SoC/input-signal/parent-input-signal
   template: `
     <h1>{{ title }}</h1>
     <nav>
-      <a routerLink="">#️⃣ Root</a>
-      <a routerLink="/SoC/input-output">1️⃣ SoC Parent <-> Child API Observable API Nested</a>
+      <a routerLink="">#️⃣</a>
+      <a routerLink="/SoC/input-output">0️⃣ SoC Parent <-> Child API Observable API Nested</a>
       <a routerLink="/SoC/input-signal">1️⃣ SoC Parent <-> Child, input-signal, API Observable API Nested</a>
       <a routerLink="/orphan-observable">2️⃣ Orphan Observable</a>
       <a routerLink="/orphan-signal">3️⃣ Orphan Signal</a>
