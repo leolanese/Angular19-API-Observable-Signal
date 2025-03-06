@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable, inject } from '@angular/core';
-import { Observable, catchError, debounceTime, of, shareReplay, throwError } from 'rxjs';
+import {HttpClient} from '@angular/common/http';
+import {Injectable,inject} from '@angular/core';
+import {Observable,catchError,debounceTime,of,shareReplay,throwError} from 'rxjs';
 
 @Injectable({ providedIn: 'root'})
 export class APIService {
@@ -11,6 +11,8 @@ export class APIService {
   // Generic Type Parameter <T>
   // T can replaced with: user, photos, comments, etc
   // The method returns an Observable of type T
+  // this generic method can be used to fetch any type of data
+// it is called a generic method because it can work with a variety of data types
   get<T>(url: string): Observable<T[]> {
     console.log('Fetching data from URL:', `${url}`);
 
