@@ -32,6 +32,10 @@ src/
 ```
 
 ## A few technical mentions
+🟡 `httpResource` asynchronous data fetching
+The httpResource function creates a Resource that performs an HTTP GET request to a specified URL. When provided with a reactive function for the URL, the resource updates automatically as the URL changes via signals. Under the hood, httpResource utilizes Angular's HttpClient, ensuring compatibility with existing interceptors and testing utilities.
+`Instead of manually subscribing inside an effect, rxResource allows developers to declare request dependencies and automatically updates when the dependent Signal changes.`
+
 🟡 `SoC`
 This example demonstrates the separation of concerns between the: 
 `service (responsible for fetching data)`, 
