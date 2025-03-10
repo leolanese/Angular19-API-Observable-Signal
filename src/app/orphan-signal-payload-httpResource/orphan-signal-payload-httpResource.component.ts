@@ -3,12 +3,29 @@ import { httpResource } from '@angular/common/http';
 import { Component, signal } from '@angular/core';
 
 @Component({
-  selector: 'orphan-signal-payload-simple-httpResource',
+  selector: 'orphan-signal-payload-httpResource',
   standalone: true,
   imports: [CommonModule],
   template: `
-    // to store usersResource.value() in the template
+    <!-- to store usersResource.value() in the template -->
     @let usersData = usersResource.value();
+
+    <button (click)="createUser()">Create User</button>
+<div *ngIf="createUserResource.isLoading()">Creating user...</div>
+    <div *ngIf="createUserResource.error()">
+      <!-- Log the error to inspect its structure -->
+      <pre>{{ createUserResource.error() | json }}</pre>
+      <!-- Display an error message if available -->
+    </div>
+    <div *ngIf="createUserResource.value()">
+      <!-- Log the value to inspect the data structure -->
+      <pre>{{ createUserResource.value() | json }}</pre>
+      <div *ngFor="let user of createUserResource.value()?.data">
+        User created: {{ user?.name || 'No name provided' }} (ID: {{ user?.id || 'N/A' }})
+      </div>
+    </div>
+
+
 
     @if (usersResource.isLoading()) {
       <p>Loading users...</p>
@@ -39,6 +56,20 @@ import { Component, signal } from '@angular/core';
 export class OrphanSignalPayloadSimpleResourceComponent {
   // Pagination signal
   page = signal(1);
+
+  // Create a resource for POST request
+  createUserResource = httpResource<{ data: any[] }>({
+    url: 'https://reqres.in/api/users',
+    method: 'POST',
+    body: { name: 'Leo' }, // Example request body
+  });
+
+  createUser() {
+    // not .post() 
+    // does not have a .post() method, because it is designed to 
+    // handle HTTP requests reactively, not imperatively.
+    this.createUserResource.reload();
+  }
 
   // Using function-based httpResource
   usersResource = httpResource<{ data: any[] }>(() =>
