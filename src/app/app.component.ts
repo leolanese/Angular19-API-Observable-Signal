@@ -36,5 +36,5 @@ import { ParentInputSignalComponent } from './SoC/input-signal/parent-input-sign
   styles: [`a {font-size: 2em; display: block;}`],
 })
 export class AppComponent {
-  title = 'Angular 19, API request using Observable and Signal';
+  title = 'Angular 19.2+, API request using Observable, Signal and httpResource';
 }

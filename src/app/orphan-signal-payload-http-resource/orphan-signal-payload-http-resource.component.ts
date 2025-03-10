@@ -7,11 +7,8 @@ import { Component, signal } from '@angular/core';
   standalone: true,
   imports: [CommonModule],
   template: `
-    <!-- to store usersResource.value() in the template -->
-    @let usersData = usersResource.value();
-
     <button (click)="createUser()">Create User</button>
-<div *ngIf="createUserResource.isLoading()">Creating user...</div>
+    <div *ngIf="createUserResource.isLoading()">Creating user...</div>
     <div *ngIf="createUserResource.error()">
       <!-- Log the error to inspect its structure -->
       <pre>{{ createUserResource.error() | json }}</pre>
@@ -26,6 +23,8 @@ import { Component, signal } from '@angular/core';
     </div>
 
 
+    <!-- to store usersResource.value() in the template -->
+    @let usersData = usersResource.value();
 
     @if (usersResource.isLoading()) {
       <p>Loading users...</p>
