@@ -1,26 +1,26 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, JsonPipe } from '@angular/common';
 import { httpResource } from '@angular/common/http';
 import { Component, signal } from '@angular/core';
 
 @Component({
   selector: 'orphan-signal-payload-http-resource',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, JsonPipe],
   template: `
     <button (click)="createUser()">Create User</button>
-    <div *ngIf="createUserResource.isLoading()">Creating user...</div>
-    <div *ngIf="createUserResource.error()">
-      <!-- Log the error to inspect its structure -->
-      <pre>{{ createUserResource.error() | json }}</pre>
-      <!-- Display an error message if available -->
-    </div>
-    <div *ngIf="createUserResource.value()">
-      <!-- Log the value to inspect the data structure -->
-      <pre>{{ createUserResource.value() | json }}</pre>
-      <div *ngFor="let user of createUserResource.value()?.data">
-        User created: {{ user?.name || 'No name provided' }} (ID: {{ user?.id || 'N/A' }})
-      </div>
-    </div>
+
+    @if (createUserResource.isLoading()) {
+      <p>Creating users...</p>
+    } @else {
+      @if (createUserResource.error()) {
+        <pre>{{ createUserResource.error() | json }}</pre>
+      } @else @if (createUserResource.value()) {
+        @for (let user of createUserResource.value()?.data") {
+          User created: {{ user?.name || 'No name provided' }} (ID: {{ user?.id || 'N/A' }})
+          <pre>{{ user | json }}</pre>
+        }
+      }
+    }
 
 
     <!-- to store usersResource.value() in the template -->
