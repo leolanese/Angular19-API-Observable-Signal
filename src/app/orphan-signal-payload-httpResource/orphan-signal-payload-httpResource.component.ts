@@ -53,7 +53,7 @@ import { Component, signal } from '@angular/core';
   }
   `,
 })
-export class OrphanSignalPayloadSimpleResourceComponent {
+export class OrphanSignalPayloadResourceComponent {
   // Pagination signal
   page = signal(1);
 
