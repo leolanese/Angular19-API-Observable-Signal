@@ -1,6 +1,6 @@
-import {NgFor} from '@angular/common';
-import {Component,inject} from '@angular/core';
-import {APISignalService} from './api-signal.service';
+import { NgFor } from '@angular/common';
+import { Component, inject } from '@angular/core';
+import { APISignalService } from './api-signal.service';
 
 @Component({
   selector: 'app-orphan-signal-payload-simple',
@@ -11,7 +11,8 @@ import {APISignalService} from './api-signal.service';
         {{ item.title }}
       </li>
     </ul>
-  `
+  `,
+  standalone: true,
 })
 export class OrphanSignalPayloadSimpleComponent {
   apiSignalService = inject(APISignalService);

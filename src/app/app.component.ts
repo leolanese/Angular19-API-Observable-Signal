@@ -1,11 +1,11 @@
-import {Component} from '@angular/core';
-import {RouterModule,RouterOutlet} from '@angular/router';
-import {OrphanObservableComponent} from './orphan-observable/orphan-observable.component';
-import {OrphanSignalPayloadNestedComponent} from './orphan-signal-payload-nested/orphan-signal-payload-nested.component';
-import {OrphanSignalPayloadSimpleComponent} from './orphan-signal-payload-simple/orphan-signal-payload-simple.component';
-import {OrphanSignalComponent} from './orphan-signal/orphan-signal.component';
-import {ParentComponent} from './SoC/input-output/parent.component';
-import {ParentInputSignalComponent} from './SoC/input-signal/parent-input-signal.component';
+import { Component } from '@angular/core';
+import { RouterModule, RouterOutlet } from '@angular/router';
+import { OrphanObservableComponent } from './orphan-observable/orphan-observable.component';
+import { OrphanSignalPayloadNestedComponent } from './orphan-signal-payload-nested/orphan-signal-payload-nested.component';
+import { OrphanSignalPayloadSimpleComponent } from './orphan-signal-payload-simple/orphan-signal-payload-simple.component';
+import { OrphanSignalComponent } from './orphan-signal/orphan-signal.component';
+import { ParentComponent } from './SoC/input-output/parent.component';
+import { ParentInputSignalComponent } from './SoC/input-signal/parent-input-signal.component';
 
 @Component({
   selector: 'app-root',
@@ -29,6 +29,7 @@ import {ParentInputSignalComponent} from './SoC/input-signal/parent-input-signal
       <a routerLink="/orphan-signal">3️⃣ Orphan Signal</a>
       <a routerLink="/orphan-signal-payload-simple">4️⃣ Orphan Signal Payload API Simple</a>
       <a routerLink="/orphan-signal-payload-nested">5️⃣ Orphan Signal Payload API Nested</a>
+      <a routerLink="/orphan-signal-payload-simple-httpResource">5️⃣ Orphan Signal Payload API Simple HttpResource</a>
     </nav>
     <router-outlet></router-outlet>
   `,
