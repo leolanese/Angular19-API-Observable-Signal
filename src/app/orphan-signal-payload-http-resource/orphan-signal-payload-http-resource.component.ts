@@ -3,7 +3,7 @@ import { httpResource } from '@angular/common/http';
 import { Component, signal } from '@angular/core';
 
 @Component({
-  selector: 'orphan-signal-payload-httpResource',
+  selector: 'orphan-signal-payload-http-resource',
   standalone: true,
   imports: [CommonModule],
   template: `
@@ -53,7 +53,7 @@ import { Component, signal } from '@angular/core';
   }
   `,
 })
-export class OrphanSignalPayloadResourceComponent {
+export class OrphanSignalPayloadHttpResourceComponent {
   // Pagination signal
   page = signal(1);
 
