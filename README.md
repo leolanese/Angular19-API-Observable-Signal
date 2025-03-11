@@ -19,12 +19,13 @@ https://restcountries.com/v3.1/lang/spanish?fields=name
 src/
 └── app/
      ├── SoC/
-          └── input/output   = Separation of Concern using Parent and Child, @Input()/@Output()
-          └── input/output   = Separation of Concern using Parent and Child, input signal/@Output()  
-     ├── orphan-observable/  = single Component, managing API request using Observables
-     ├── orphan-signal/      = single Component, managing API request using Signals
-     ├── orphan-signal-payload-simple/  = single Component, managing API request using Signal
-     ├── orphan-signal-payload-nested/  = single Component, managing complex API request using Signal
+          └── input/output   // Separation of Concern using Parent and Child, @Input()/@Output()
+          └── input/output   // Separation of Concern using Parent and Child, input signal/@Output()  
+     ├── orphan-observable/  // single Component, managing API request using Observables
+     ├── orphan-signal/      // single Component, managing API request using Signals
+     ├── orphan-signal-payload-simple/  // single Component, managing API request using Signal
+     ├── orphan-signal-payload-nested/  // single Component, managing complex API request using Signal
+     ├── orphan-signal-payload-http-resource // simple Component, managing API request using Signals with httpResouce asynchronous data fetching
      |
      ├── app.component.ts
      ├── auth.interceptor.ts
