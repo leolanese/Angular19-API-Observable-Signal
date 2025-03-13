@@ -9,22 +9,26 @@ import { Component, signal } from '@angular/core';
   template: `
     <button (click)="createUser()">Create User</button>
 
-    @let createUserResource = createUserResource.value();
-
     @if (createUserResource.isLoading()) {
       <p>Creating users...</p>
     } @else {
+
       @if (createUserResource.error()) {
         <pre>{{ createUserResource.error() | json }}</pre>
-      } @else {
-        @if (createUserResource) {
-          @for (let user of createUserResource?.data") {
-            User created: {{ user?.name || 'No name provided' }} (ID: {{ user?.id || 'N/A' }})
-            <pre>{{ user | json }}</pre>
-          }
-        }
-      } 
+      }
+      
+    
+    <div *ngIf="createUserResource.value()">
+      <!-- Log the value to inspect the data structure -->
+      <pre>{{ createUserResource.value() | json }}</pre>
+      <div *ngFor="let user of createUserResource.value()?.data">
+        User created: {{ user?.name || 'No name provided' }} (ID: {{ user?.id || 'N/A' }})
+        {{ user | json }}
+      </div>
+    </div>
+
     }
+
 
     <!-- to store usersResource.value() in the template -->
     @let usersData = usersResource.value();
