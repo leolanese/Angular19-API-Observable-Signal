@@ -1,6 +1,6 @@
-import { CommonModule, JsonPipe } from '@angular/common';
-import { httpResource } from '@angular/common/http';
-import { Component, signal } from '@angular/core';
+import {CommonModule,JsonPipe} from '@angular/common';
+import {httpResource} from '@angular/common/http';
+import {Component,signal} from '@angular/core';
 
 @Component({
   selector: 'orphan-signal-payload-http-resource',

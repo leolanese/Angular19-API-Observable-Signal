@@ -58,7 +58,8 @@ meaning that our services will not be included in the final bundle unless they a
 - `shareReplay(1)` because multiple components might subscribe to the same observable
 
 🟡 Signals and Observables
-Signals will hold state values and trigger reactivity in our component, whereas Observables are streams of data that may emit multiple values over time.
+- Prefer Signals Over BehaviorSubjects for State Management
+- Signals will hold state values and trigger reactivity in our component, whereas Observables are streams of data that may emit multiple values over time.
 
 🟡 OnPush Change Detection and Reactive Signal 
 I Changed detection OnPush: So only change detection is triggered locally to the Signal change (changeDetection: ChangeDetectionStrategy.OnPush)
