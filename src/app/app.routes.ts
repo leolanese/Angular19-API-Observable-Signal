@@ -8,7 +8,7 @@ import { ParentComponent } from './SoC/input-output/parent.component';
 import { ParentInputSignalComponent } from './SoC/input-signal/parent-input-signal.component';
 
 export const routes: Routes = [
-  { path: 'SoC', component: ParentComponent }, 
+  { path: 'SoC/input-output', component: ParentComponent }, 
   { path: 'SoC/input-signal', component: ParentInputSignalComponent }, 
   { path: 'orphan-observable', component: OrphanObservableComponent },
   { path: 'orphan-signal', component: OrphanSignalComponent },
