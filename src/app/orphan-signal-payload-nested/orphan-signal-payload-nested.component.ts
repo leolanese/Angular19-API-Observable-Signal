@@ -13,18 +13,18 @@ import { APISignalService } from './api-signal.service';
     </button>
 
     @if (apiSignalService.data(); as selectedCountry) {
-    <div>
-      <h2>{{ selectedCountry.name?.common }}</h2>
-      <img [src]="selectedCountry.flags?.png" />
-    </div>
+      <div>
+        <h2>{{ selectedCountry.name?.common }}</h2>
+        <img [src]="selectedCountry.flags?.png" />
+      </div>
     }
 
     <p>AC2) Select a country and Show the flag:</p>
     <ul>
       @for (item of apiSignalService.items(); track item.name.common) {
-      <li (click)="apiSignalService.selectCountry(item.name.common)">
-        <p>Country name: {{ item.name.common }}</p>
-      </li>
+        <li (click)="apiSignalService.selectCountry(item.name.common)">
+          <p>Country name: {{ item.name.common }}</p>
+        </li>
       }
     </ul>
 

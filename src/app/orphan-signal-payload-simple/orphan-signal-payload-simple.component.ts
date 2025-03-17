@@ -6,7 +6,7 @@ import { APISignalService } from './api-signal.service';
   selector: 'app-orphan-signal-payload-simple',
   imports: [NgFor],
   template: `
-    <ul>
+    <ul>xxx
       <li *ngFor="let item of apiSignalService.data$()">
         {{ item.title }}
       </li>
