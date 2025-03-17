@@ -29,13 +29,13 @@ import { Component, signal } from '@angular/core';
 
     <!-- to store usersResource.value() in the template -->
     @let usersData = usersResource.value(); @if (usersResource.isLoading()) {
-    <p>Loading users...</p>
+      <p>Loading users...</p>
     } @else { @if ((usersData?.data?.length ?? 0) === 0) {
-    <p>No users found :(</p>
+      <p>No users found :(</p>
     } @else {
-    <p>Users found:</p>
-    <button (click)="prevPage()" [disabled]="page() === 1">Previous</button>
-    <button (click)="nextPage()">Next</button>
+      <p>Users found:</p>
+      <button (click)="prevPage()" [disabled]="page() === 1">Previous</button>
+      <button (click)="nextPage()">Next</button>
 
     <ul>
       @for (user of usersData?.data ?? []; track user.id) {
