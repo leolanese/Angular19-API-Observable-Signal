@@ -1,10 +1,11 @@
+import { JsonPipe } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { ServiceAPI } from './serviceAPI';
 
 @Component({
   selector: 'app-orphan-signal-payload-httpresource-parameter',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, JsonPipe],
   template: `
       <label>Search: </label>
       <input [formControl]="searchControl" />
@@ -20,7 +21,8 @@ import { ServiceAPI } from './serviceAPI';
               <tr>
                 <th>Name</th>
                 <th>Model</th>
-                <th>Cost (in credits)</th>
+                <th>Cost</th>
+                <th>Manufacture</th>
               </tr>
             </thead>
             <tbody>
@@ -29,7 +31,9 @@ import { ServiceAPI } from './serviceAPI';
                   <td>{{ item.name }}</td>
                   <td>{{ item.model }}</td>
                   <td>{{ item.cost_in_credits }}</td>
+                  <td>{{ item.manufacturer }}</td>
                 </tr>
+                <!-- <pre>{{ item | json }}</pre> -->
               }
             </tbody>
           </table>
@@ -43,13 +47,13 @@ export class OrphanSignalPayloadHttpresourceParameterComponent {
    // Injected services
    private serviceApi = inject(ServiceAPI);
 
-  searchControl = new FormControl('');
+   searchControl = new FormControl('');
   
     constructor() {
     // You can now use valueChanges observable
     this.searchControl.valueChanges.subscribe((value: string | null) => {
       // Handle value changes
-       this.serviceApi.searchModel.set(value ?? '');
+       this.serviceApi.searchSignal.set(value ?? '');
     });
   }
 
@@ -57,5 +61,5 @@ export class OrphanSignalPayloadHttpresourceParameterComponent {
    items = this.serviceApi.items;
    isLoading = this.serviceApi.isLoading;
    errorMessage = this.serviceApi.errorMessage;
-   searchModel = this.serviceApi.searchModel;
+   searchSignal = this.serviceApi.searchSignal;
 }

@@ -13,10 +13,10 @@ export class ServiceAPI {
   private url = 'https://swapi.py4e.com/api/vehicles';
 
    // Input signal for search text
-  searchModel = signal<string>('');
+  searchSignal = signal<string>('');
 
   // Debounced signal to prevent too many API calls
-  searchValue = debounceSignal(this.searchModel, 300);
+  searchValue = debounceSignal(this.searchSignal, 300);
 
   // Using httpResource() with a parameter
   private itemsResource = httpResource<any>(
@@ -24,9 +24,10 @@ export class ServiceAPI {
   );
 
   // Computed signals for the template
+  isLoading = this.itemsResource.isLoading;
+  errorMessage = computed(() => setErrorMessage(this.error(), 'Item'));
   items = computed(() => this.itemsResource.value()?.results ?? []);
   error = computed(() => this.itemsResource.error() as HttpErrorResponse);
-  errorMessage = computed(() => setErrorMessage(this.error(), 'Item'));
-  isLoading = this.itemsResource.isLoading;
+  
 }
 
