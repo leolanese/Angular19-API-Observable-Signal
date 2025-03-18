@@ -1,4 +1,4 @@
-# Angular (19.2+) Observable and Signal payload using API requests
+# Angular (19.2+) Observable + Signals for handling API requests
 
 ## Goals AC's
 
@@ -34,6 +34,7 @@ src/
 ```
 
 ## A few technical mentions
+
 🟡 `httpResource` asynchronous data fetching (Angular 19.2+)
 This feature simplifies working with RESTful APIs by providing a higher-level abstraction for interacting with resources on a server.
 
@@ -42,14 +43,13 @@ It is designed to reduce boilerplate code when performing common CRUD (Create, R
 The httpResource function creates a Resource that performs an HTTP GET request to a specified URL. When provided with a reactive function for the URL, the resource updates automatically as the URL changes via signals. Under the hood, httpResource utilizes Angular's HttpClient, ensuring compatibility with existing interceptors and testing utilities.
 `Instead of manually subscribing inside an effect, rxResource allows developers to declare request dependencies and automatically updates when the dependent Signal changes.`
 
-🟡 httpresource with paramenters:
-- clean, reactive data flow
-- The service demonstrates modern Angular patterns
-- Uses signals for reactive state management
-- Using httpResource for automatic data fetching
-- Implements debouncing for performance
+🟡 `Signal with httpresource (with paramenters)`
+- Reactive Forms instead template-driven
+- using Signals for a clean, reactive data flow and reactive state management
+- Using httpResource, with parameter, for automatic data fetching
+- Implements debouncing for performance + Handles errors, in separates function for reusability
 - Provides computed values for derived state
-- Handles errors gracefully
+
 
 🟡 `SoC`
 This example demonstrates the separation of concerns between the: 
