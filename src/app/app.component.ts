@@ -30,7 +30,8 @@ import { ParentInputSignalComponent } from './SoC/input-signal/parent-input-sign
       <a routerLink="/orphan-signal-payload-simple">4️⃣ Orphan Signal Payload API Simple</a>
       <a routerLink="/orphan-signal-payload-nested">5️⃣ Orphan Signal Payload API Nested</a>
       <a routerLink="/orphan-signal-payload-httpresource">6️⃣ Orphan Signal Payload API Simple HttpResource</a>
-      <a routerLink="/orphan-signal-payload-httpresource-paramenter">6️⃣ Orphan Signal Payload API Simple HttpResource Parameter</a>
+      <a routerLink="/orphan-signal-payload-httpresource-reactiveForm">6️⃣ Orphan Signal Payload API Simple HttpResource reactive form</a>
+      <a routerLink="/orphan-signal-payload-httpresource-signal">6️⃣ Orphan Signal Payload API Simple HttpResource Signal</a>
     </nav>
     <router-outlet></router-outlet>
   `,

@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { OrphanObservableComponent } from './orphan-observable/orphan-observable.component';
-import { OrphanSignalPayloadHttpresourceParameterComponent } from './orphan-signal-payload-httpresource-parameter/orphan-signal-payload-httpresource-parameter.component';
+import { OrphanSignalPayloadHttpresourceSignalComponent } from './orphan-signal-httpresource-signal/orphan-signal-payload-httpresource-signal.component';
+import { OrphanSignalPayloadHttpresourceReactiveFormComponent } from './orphan-signal-payload-httpresource-reactiveForm/orphan-signal-payload-httpresource-reactiveForm.component';
 import { OrphanSignalPayloadHttpResourceComponent } from './orphan-signal-payload-httpresource/orphan-signal-payload-httpresource.component';
 import { OrphanSignalPayloadNestedComponent } from './orphan-signal-payload-nested/orphan-signal-payload-nested.component';
 import { OrphanSignalPayloadSimpleComponent } from './orphan-signal-payload-simple/orphan-signal-payload-simple.component';
@@ -16,6 +17,7 @@ export const routes: Routes = [
   { path: 'orphan-signal-payload-simple', component: OrphanSignalPayloadSimpleComponent },
   { path: 'orphan-signal-payload-nested', component: OrphanSignalPayloadNestedComponent },
   { path: 'orphan-signal-payload-httpresource', component: OrphanSignalPayloadHttpResourceComponent},
-  { path: 'orphan-signal-payload-httpresource-paramenter', component: OrphanSignalPayloadHttpresourceParameterComponent},
+  { path: 'orphan-signal-payload-httpresource-reactiveForm', component: OrphanSignalPayloadHttpresourceReactiveFormComponent},
+  { path: 'orphan-signal-payload-httpresource-signal', component: OrphanSignalPayloadHttpresourceSignalComponent},
   { path: '**', redirectTo: '', pathMatch: 'full' },
 ];

@@ -26,7 +26,8 @@ src/
      ├── orphan-signal-payload-simple/  // single Component, managing API request using Signal
      ├── orphan-signal-payload-nested/  // single Component, managing complex API request using Signal
      ├── orphan-signal-payload-httpresource // simple Component, managing API request using Signals with httpResouce asynchronous data fetching
-     ├──    orphan-signal-payload-httpresource-parameter // Shows how the new signals approach replaces the traditional RxJS pattern
+     ├── orphan-signal-payload-httpresource-reactiveForm // Shows how the new signals approach replaces the traditional RxJS pattern
+     ├── orphan-signal-payload-httpresource-signal // Pure signal-based approach. Using direct signal binding with [value] and (input). Simple event handler to update the signal
      |
      ├── app.component.ts
      ├── auth.interceptor.ts
@@ -49,6 +50,7 @@ The httpResource function creates a Resource that performs an HTTP GET request t
 - Using httpResource, with parameter, for automatic data fetching
 - Implements debouncing for performance + Handles errors, in separates function for reusability
 - Provides computed values for derived state
+- Stays within the signals paradigm and use signals' effect() to automatically handle cleanup (instead OnInit/OnDestroy + No need for manual subscription management)
 
 
 🟡 `SoC`
@@ -56,30 +58,30 @@ This example demonstrates the separation of concerns between the:
 `service (responsible for fetching data)`, 
 `smart component (responsible for handling business logic and passing data to the dummy component)`, `dummy component (responsible for rendering the UI)` 
 
-🟡 Modern StandAlone Components:
+🟡 `Modern StandAlone Components`:
 I directly bootstrap the component itself, not its module. This is because standalone components have their own injectors and don't rely on a root module for dependency injection. Promotes code maintainability, reusability, and smaller application size.
 
 🟡 Implemented `TSP mechanism`:
 I'm using `Tree Shakeable Providers` in `Services` by using the `providedIn` attribute, this will provide the benefits of both `tree shaking performance` and `dependency injection`,
 meaning that our services will not be included in the final bundle unless they are being used by other services or components. As a result we reduce the bundle size by removing unused code from the bundle.
 
-🟡 RxJS
+🟡 `RxJS`
 - `takeUntilDestroyed(this.destroyRef)` to automatically unsubscribe when the component is destroyed, simplifying the cleanup process even further
 - `shareReplay(1)` because multiple components might subscribe to the same observable
 
-🟡 Signals and Observables
+🟡 `Signals and Observables`
 - Prefer Signals Over BehaviorSubjects for State Management
 - Signals will hold state values and trigger reactivity in our component, whereas Observables are streams of data that may emit multiple values over time.
 
-🟡 OnPush Change Detection and Reactive Signal 
+🟡 `OnPush Change Detection and Reactive Signal` 
 I Changed detection OnPush: So only change detection is triggered locally to the Signal change (changeDetection: ChangeDetectionStrategy.OnPush)
 
-🟡 TypeScript
+🟡 `TypeScript`
 - TS Generic Type Parameter <T>
 T can replaced with: user, photos, comments, etc. 
 The method returns an Observable of `type T`
 
-🟡 Dependency Injection Pattern:
+🟡 `Dependency Injection Pattern`:
 I'm using Modern `Dependency Injection functions`, instead traditional `constructor-based dependency injection`as result I will have a more Modular, Less Complex
 
 🟡 Implement Caching:
