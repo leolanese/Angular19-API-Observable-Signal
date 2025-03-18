@@ -26,6 +26,7 @@ src/
      ├── orphan-signal-payload-simple/  // single Component, managing API request using Signal
      ├── orphan-signal-payload-nested/  // single Component, managing complex API request using Signal
      ├── orphan-signal-payload-httpresource // simple Component, managing API request using Signals with httpResouce asynchronous data fetching
+     ├──    orphan-signal-payload-httpresource-parameter // Shows how the new signals approach replaces the traditional RxJS pattern
      |
      ├── app.component.ts
      ├── auth.interceptor.ts
@@ -40,6 +41,15 @@ It is designed to reduce boilerplate code when performing common CRUD (Create, R
 
 The httpResource function creates a Resource that performs an HTTP GET request to a specified URL. When provided with a reactive function for the URL, the resource updates automatically as the URL changes via signals. Under the hood, httpResource utilizes Angular's HttpClient, ensuring compatibility with existing interceptors and testing utilities.
 `Instead of manually subscribing inside an effect, rxResource allows developers to declare request dependencies and automatically updates when the dependent Signal changes.`
+
+🟡 httpresource with paramenters:
+- clean, reactive data flow
+- The service demonstrates modern Angular patterns
+- Uses signals for reactive state management
+- Using httpResource for automatic data fetching
+- Implements debouncing for performance
+- Provides computed values for derived state
+- Handles errors gracefully
 
 🟡 `SoC`
 This example demonstrates the separation of concerns between the: 

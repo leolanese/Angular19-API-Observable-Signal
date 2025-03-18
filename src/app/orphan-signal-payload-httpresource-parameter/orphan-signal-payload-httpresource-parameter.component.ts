@@ -6,11 +6,8 @@ import { ServiceAPI } from './serviceAPI';
   selector: 'app-orphan-signal-payload-httpresource-parameter',
   imports: [ReactiveFormsModule],
   template: `
-      <label for="model">Search string: </label>
-      <input type="text"
-              id="model"
-              name="model"
-              [formControl]="searchControl">
+      <label>Search: </label>
+      <input [formControl]="searchControl" />
 
       @if (isLoading()) {
         <div>... loading </div>
