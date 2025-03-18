@@ -1,23 +1,23 @@
 import { Component, inject } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { VehicleService } from './serviceAPI';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { ServiceAPI } from './serviceAPI';
 
 @Component({
   selector: 'app-orphan-signal-payload-httpresource-parameter',
-  imports: [FormsModule],
+  imports: [ReactiveFormsModule],
   template: `
       <label for="model">Search string: </label>
       <input type="text"
               id="model"
               name="model"
-              [(ngModel)]="searchModel">
+              [formControl]="searchControl">
 
       @if (isLoading()) {
-        <div>... loading vehicles</div>
+        <div>... loading </div>
       } @else if (errorMessage()){
         <div style='color: red'>An error occurred: {{ errorMessage() }}</div>
       } @else {
-        @if (vehicles().length) {
+        @if (items().length) {
           <table>
             <thead>
               <tr>
@@ -27,29 +27,38 @@ import { VehicleService } from './serviceAPI';
               </tr>
             </thead>
             <tbody>
-              @for (vehicle of vehicles(); track vehicle) {
+              @for (item of items(); track item) {
                 <tr>
-                  <td>{{ vehicle.name }}</td>
-                  <td>{{ vehicle.model }}</td>
-                  <td>{{ vehicle.cost_in_credits }}</td>
+                  <td>{{ item.name }}</td>
+                  <td>{{ item.model }}</td>
+                  <td>{{ item.cost_in_credits }}</td>
                 </tr>
               }
             </tbody>
           </table>
         } @else {
-          <div>No vehicles found</div>
+          <div>No elements found</div>
         }
       }
   `,
-  standalone: true
 })
 export class OrphanSignalPayloadHttpresourceParameterComponent {
    // Injected services
-   private vehicleService = inject(VehicleService);
+   private serviceApi = inject(ServiceAPI);
+
+  searchControl = new FormControl('');
+  
+    constructor() {
+    // You can now use valueChanges observable
+    this.searchControl.valueChanges.subscribe((value: string | null) => {
+      // Handle value changes
+       this.serviceApi.searchModel.set(value ?? '');
+    });
+  }
 
    // Signals to support the template
-   vehicles = this.vehicleService.vehicles;
-   isLoading = this.vehicleService.isLoading;
-   errorMessage = this.vehicleService.errorMessage;
-   searchModel = this.vehicleService.searchModel;
+   items = this.serviceApi.items;
+   isLoading = this.serviceApi.isLoading;
+   errorMessage = this.serviceApi.errorMessage;
+   searchModel = this.serviceApi.searchModel;
 }

@@ -9,8 +9,8 @@ import { debounceSignal } from './signal-utilities';
 @Injectable({
   providedIn: 'root',
 })
-export class VehicleService {
-  private vehicleUrl = 'https://swapi.py4e.com/api/vehicles';
+export class ServiceAPI {
+  private url = 'https://swapi.py4e.com/api/vehicles';
 
   searchModel = signal<string>('');
   // why debouncing here?
@@ -19,15 +19,16 @@ export class VehicleService {
   searchText = debounceSignal(this.searchModel, 300);
 
   // Using ** httpResource() ** with a parameter
-  private vehiclesResource = httpResource<any>(
-    () => `${this.vehicleUrl}?search=${this.searchText()}`
-  );
-  vehicles = computed(
-    () => this.vehiclesResource.value()?.results ?? ([] as any[])
+  private itemsResource = httpResource<any>(
+    () => `${this.url}?search=${this.searchText()}`
   );
 
-  error = computed(() => this.vehiclesResource.error() as HttpErrorResponse);
-  errorMessage = computed(() => setErrorMessage(this.error(), 'Vehicle'));
-  isLoading = this.vehiclesResource.isLoading;
+  items = computed(
+    () => this.itemsResource.value()?.results ?? ([] as any[])
+  );
+
+  error = computed(() => this.itemsResource.error() as HttpErrorResponse);
+  errorMessage = computed(() => setErrorMessage(this.error(), 'Item'));
+  isLoading = this.itemsResource.isLoading;
 }
 
