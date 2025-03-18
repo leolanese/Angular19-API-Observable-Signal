@@ -3,8 +3,8 @@ import {
   httpResource
 } from '@angular/common/http';
 import { Injectable, computed, signal } from '@angular/core';
-import { setErrorMessage } from '../error-message';
-import { debounceSignal } from '../signal-utilities';
+import { setErrorMessage } from './error-message';
+import { debounceSignal } from './signal-utilities';
 
 @Injectable({
   providedIn: 'root',
@@ -12,43 +12,18 @@ import { debounceSignal } from '../signal-utilities';
 export class VehicleService {
   private vehicleUrl = 'https://swapi.py4e.com/api/vehicles';
 
-  enteredModel = signal<string>('');
-  // why?
-  
-  searchText = debounceSignal(this.enteredModel, 600);
-
-  // Original code, moved to the debounceSignal function
-  // searchText$ = toObservable(this.selectedModel).pipe(
-  //    debounceTime(400)
-  // );
-  // searchText = toSignal(this.searchText$);
-
-  // Using ** resource() ** with a parameter
-  // private vehiclesResource = resource({
-  //    request: this.searchText,
-  //    loader: (param) => fetch(`${this.vehicleUrl}?search=${param.request}`)
-  //       .then(res => res.json() as Promise<VehicleResponse>)
-  // });
-
-  // private http = inject(HttpClient);
-  // // Using ** rxResource() ** with a parameter
-  // private vehiclesResource = rxResource({
-  //    request: this.searchText,
-  //    loader:(param) => {
-  //       return this.http.get<VehicleResponse>(
-  //          `${this.vehicleUrl}?search=${param.request}`).pipe(
-  //             map(vr => vr.results)
-  //          )
-  //    }
-  // });
-  // vehicles = computed(() => this.vehiclesResource.value() ?? [] as Vehicle[]);
+  searchModel = signal<string>('');
+  // why debouncing here?
+  // The httpResource makes HTTP requests based on the search text. Without debouncing, each character typed would create a new HTTP request, most of which would be immediately cancelled as new ones are made.
+  // If you removed the debounce, you would likely see performance issues and a degraded user experience, especially with slower network connections or when dealing with larger datasets.
+  searchText = debounceSignal(this.searchModel, 300);
 
   // Using ** httpResource() ** with a parameter
-  private vehiclesResource = httpResource<VehicleResponse>(
+  private vehiclesResource = httpResource<any>(
     () => `${this.vehicleUrl}?search=${this.searchText()}`
   );
   vehicles = computed(
-    () => this.vehiclesResource.value()?.results ?? ([] as Vehicle[])
+    () => this.vehiclesResource.value()?.results ?? ([] as any[])
   );
 
   error = computed(() => this.vehiclesResource.error() as HttpErrorResponse);
@@ -56,15 +31,3 @@ export class VehicleService {
   isLoading = this.vehiclesResource.isLoading;
 }
 
-export interface VehicleResponse {
-  count: number;
-  next: string;
-  previous: string;
-  results: Vehicle[];
-}
-
-export interface Vehicle {
-  name: string;
-  cost_in_credits: number;
-  model: string;
-}

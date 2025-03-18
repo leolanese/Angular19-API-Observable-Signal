@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { OrphanObservableComponent } from './orphan-observable/orphan-observable.component';
+import { OrphanSignalPayloadHttpresourceParameterComponent } from './orphan-signal-payload-httpresource-parameter/orphan-signal-payload-httpresource-parameter.component';
 import { OrphanSignalPayloadHttpResourceComponent } from './orphan-signal-payload-httpresource/orphan-signal-payload-httpresource.component';
 import { OrphanSignalPayloadNestedComponent } from './orphan-signal-payload-nested/orphan-signal-payload-nested.component';
 import { OrphanSignalPayloadSimpleComponent } from './orphan-signal-payload-simple/orphan-signal-payload-simple.component';
@@ -15,6 +16,6 @@ export const routes: Routes = [
   { path: 'orphan-signal-payload-simple', component: OrphanSignalPayloadSimpleComponent },
   { path: 'orphan-signal-payload-nested', component: OrphanSignalPayloadNestedComponent },
   { path: 'orphan-signal-payload-httpresource', component: OrphanSignalPayloadHttpResourceComponent},
-  { path: 'orphan-signal-payload-httpresource-paramenter', component: OrphanSignalPayloadHttpResourceParameterComponent},
+  { path: 'orphan-signal-payload-httpresource-paramenter', component: OrphanSignalPayloadHttpresourceParameterComponent},
   { path: '**', redirectTo: '', pathMatch: 'full' },
 ];
