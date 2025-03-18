@@ -6,13 +6,12 @@ import { APISignalService } from './api-signal.service';
   selector: 'app-orphan-signal-payload-simple',
   imports: [NgFor],
   template: `
-    <ul>xxx
+    <ul>
       <li *ngFor="let item of apiSignalService.data$()">
         {{ item.title }}
       </li>
     </ul>
   `,
-  standalone: true,
 })
 export class OrphanSignalPayloadSimpleComponent {
   apiSignalService = inject(APISignalService);

@@ -25,7 +25,7 @@ src/
      ├── orphan-signal/      // single Component, managing API request using Signals
      ├── orphan-signal-payload-simple/  // single Component, managing API request using Signal
      ├── orphan-signal-payload-nested/  // single Component, managing complex API request using Signal
-     ├── orphan-signal-payload-http-resource // simple Component, managing API request using Signals with httpResouce asynchronous data fetching
+     ├── orphan-signal-payload-httpresource // simple Component, managing API request using Signals with httpResouce asynchronous data fetching
      |
      ├── app.component.ts
      ├── auth.interceptor.ts

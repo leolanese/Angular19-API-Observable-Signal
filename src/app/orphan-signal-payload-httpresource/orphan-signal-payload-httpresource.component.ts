@@ -3,7 +3,7 @@ import { httpResource } from '@angular/common/http';
 import { Component, signal } from '@angular/core';
 
 @Component({
-  selector: 'orphan-signal-payload-http-resource',
+  selector: 'orphan-signal-payload-httpresource',
   standalone: true,
   imports: [CommonModule, JsonPipe],
   template: `
