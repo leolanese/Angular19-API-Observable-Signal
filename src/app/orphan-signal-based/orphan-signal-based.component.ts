@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { VehicleService } from './vehicle.service';
 
 @Component({
-  selector: 'app-orphan-full-signal',
+  selector: 'app-orphan-signal-based',
   standalone: true,
   template: `
     <label>Search: </label>
@@ -38,7 +38,7 @@ import { VehicleService } from './vehicle.service';
     }
   `
 })
-export class OrphanFullSignalComponent {
+export class OrphanSignalBasedComponent {
   vehicleService = inject(VehicleService);
 
   onSearch(event: Event) {
