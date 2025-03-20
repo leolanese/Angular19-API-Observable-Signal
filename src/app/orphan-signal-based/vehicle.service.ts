@@ -3,7 +3,7 @@ import { Injectable, computed, signal } from '@angular/core';
 
 @Injectable({ providedIn: 'root' })
 export class VehicleService {
-  private baseUrl = 'https://swapi.dev/api/vehicles';
+  private readonly baseUrl = 'https://swapi.dev/api/vehicles';
 
   // Input signal for search text
   searchTerm = signal<string>('');
@@ -11,8 +11,10 @@ export class VehicleService {
   // Using httpResource() with a search parameter
   private vehiclesResource = httpResource<any>(
     () => ({ 
-      url: `${this.baseUrl}${this.searchTerm() ? `?search=${this.searchTerm()}` : ''}`
-    })
+      url: `${this.baseUrl}${this.searchTerm() ? `?search=${this.searchTerm()}` : ''}`,
+      method: 'POST',
+    }),
+    { defaultValue: undefined }
   );
 
   // Computed signals for the template

@@ -41,6 +41,7 @@ import { VehicleService } from './vehicle.service';
 export class OrphanSignalBasedComponent {
   vehicleService = inject(VehicleService);
 
+   // Function to update the search
   onSearch(event: Event) {
     const value = (event.target as HTMLInputElement).value;
     this.vehicleService.searchTerm.set(value);
