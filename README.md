@@ -29,11 +29,12 @@ src/
           └── input/output   // Separation of Concern using Parent and Child, input signal/@Output()  
      ├── orphan-observable/  // single Component, managing API request using Observables
      ├── orphan-signal/      // single Component, managing API request using Signals
-     ├── orphan-signal-payload-simple/  // single Component, managing API request using Signal
-     ├── orphan-signal-payload-nested/  // single Component, managing complex API request using Signal
-     ├── orphan-signal-payload-httpresource // simple Component, managing API request using Signals with httpResouce asynchronous data fetching
-     ├── orphan-signal-payload-httpresource-reactiveForm // Shows how the new signals approach replaces the traditional RxJS pattern
-     ├── orphan-signal-payload-httpresource-signal // Pure signal-based approach. Using direct signal binding with [value] and (input). Simple event handler to update the signal
+     ├── orphan-signal-simple/  // single Component, managing API request using Signal
+     ├── orphan-signal-nested/  // single Component, managing complex API request using Signal
+     ├── orphan-signal-httpresource // simple Component, managing API request using Signals with httpResouce asynchronous data fetching
+     ├── orphan-signal--httpresource-reactiveForm // Shows how the new signals approach replaces the traditional RxJS pattern
+     ├── orphan-signal-httpresource-signal // signal-based approach. Using direct signal binding with [value] and (input). Simple event handler to update the signal
+     ├── orphan-full-signal // full signal-based approach. 
      |
      ├── app.component.ts
      ├── auth.interceptor.ts
@@ -42,13 +43,15 @@ src/
 
 ## A few technical mentions
 
-🟡 `httpResource` asynchronous data fetching (Angular 19.2+)
+🟡 The circle is complete:
+`httpResource` asynchronous data fetching (Angular 19.2+)
 This feature simplifies working with RESTful APIs by providing a higher-level abstraction for interacting with resources on a server.
 
 It is designed to reduce boilerplate code when performing common CRUD (Create, Read, Update, Delete) operations. Instead of manually writing HTTP requests for each operation, you can use HttpResource to define a resource and automatically generate methods for interacting with it. Define a resource once, and HttpResource provides methods like get(), post(), put(), delete(), etc., out of the box.
 
 The httpResource function creates a Resource that performs an HTTP GET request to a specified URL. When provided with a reactive function for the URL, the resource updates automatically as the URL changes via signals. Under the hood, httpResource utilizes Angular's HttpClient, ensuring compatibility with existing interceptors and testing utilities.
-`Instead of manually subscribing inside an effect, rxResource allows developers to declare request dependencies and automatically updates when the dependent Signal changes.`
+
+> Instead of manually subscribing inside an effect, rxResource allows developers to declare request dependencies and automatically updates when the dependent Signal changes.`
 
 🟡 `Signal with httpresource (with paramenters)`
 - Reactive Forms instead template-driven

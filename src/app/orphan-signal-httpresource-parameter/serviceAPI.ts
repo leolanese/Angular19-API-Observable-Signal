@@ -17,8 +17,8 @@ interface VehicleResponse {
   providedIn: 'root'
 })
 export class ServiceAPI {
-  #http = inject(HttpClient);
-  #baseUrl = 'https://swapi.dev/api/vehicles';
+  http = inject(HttpClient);
+  baseUrl = 'https://swapi.dev/api/vehicles';
 
   // Public signals
   searchSignal = signal('');
@@ -39,11 +39,11 @@ export class ServiceAPI {
       this.errorMessage.set(null);
       
       const url = search 
-        ? `${this.#baseUrl}?search=${search}`
-        : this.#baseUrl;
+        ? `${this.baseUrl}?search=${search}`
+        : this.baseUrl;
         
       const response = await firstValueFrom(
-        this.#http.get<VehicleResponse>(url)
+        this.http.get<VehicleResponse>(url)
       );
       this.items.set(response.results);
     } catch (err) {

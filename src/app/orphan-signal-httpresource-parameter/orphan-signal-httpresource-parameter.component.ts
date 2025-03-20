@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { ServiceAPI } from './serviceAPI';
 
 @Component({
-  selector: 'app-orphan-signal-payload-httpresource-parameter',
+  selector: 'app-orphan-signal-httpresource-parameter',
   standalone: true,
   template: `
     <label>Search: </label>
@@ -38,7 +38,7 @@ import { ServiceAPI } from './serviceAPI';
     }
   `
 })
-export class OrphanSignalPayloadHttpresourceParameterComponent {
+export class OrphanSignalHttpresourceParameterComponent {
   api = inject(ServiceAPI) as any;
 
   // Direct signal references 

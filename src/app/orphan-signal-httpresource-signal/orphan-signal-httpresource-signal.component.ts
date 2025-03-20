@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { ServiceAPI } from './serviceAPI';
 
 @Component({
-  selector: 'app-orphan-signal-payload-httpresource-signal',
+  selector: 'app-orphan-signal-httpresource-signal',
   imports: [],
   template: `
       <label>Search: </label>
@@ -43,7 +43,7 @@ import { ServiceAPI } from './serviceAPI';
       }
   `,
 })
-export class OrphanSignalPayloadHttpresourceSignalComponent {
+export class OrphanSignaldHttpResourceSignalComponent {
    private serviceApi = inject(ServiceAPI);
 
    searchSignal = this.serviceApi.searchSignal;

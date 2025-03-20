@@ -4,7 +4,7 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { ServiceAPI } from './serviceAPI';
 
 @Component({
-  selector: 'app-orphan-signal-payload-httpresource-parameter-reactiveForm',
+  selector: 'app-orphan-signal-httpresource-parameter-reactiveForm',
   imports: [ReactiveFormsModule, JsonPipe],
   template: `
       <label>Search: </label>
@@ -43,7 +43,7 @@ import { ServiceAPI } from './serviceAPI';
       }
   `,
 })
-export class OrphanSignalPayloadHttpresourceReactiveFormComponent {
+export class OrphanSignalHttpresourceReactiveFormComponent {
    // Injected services
    private serviceApi = inject(ServiceAPI);
 
