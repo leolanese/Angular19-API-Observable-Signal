@@ -2,7 +2,8 @@
 
 ## 🔸 Goals AC's
 
-### ⏺ Test legacy Angular Vs new modern Angular practices related to API requests and reactive state management
+### ⏺ Test legacy Angular Vs new modern Angular practices
+Test API based on Observable, Signal (state management, effect, httpResource, input-pattern, model)
 
 ### ⏺ Test simple/direct Api Request using a few API services:
 https://jsonplaceholder.typicode.com/posts <br />
