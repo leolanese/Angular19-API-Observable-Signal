@@ -3,7 +3,7 @@ import { Component, inject } from '@angular/core';
 import { APISignalService } from './api-signal.service';
 
 @Component({
-  selector: 'app-orphan-signal-payload-nested',
+  selector: 'app-orphan-signal-nested',
   standalone: true,
   imports: [CommonModule],
   template: `
@@ -40,6 +40,6 @@ import { APISignalService } from './api-signal.service';
     />
   `,
 })
-export class OrphanSignalPayloadNestedComponent {
+export class OrphanSignalNestedComponent {
   apiSignalService = inject(APISignalService);
 }

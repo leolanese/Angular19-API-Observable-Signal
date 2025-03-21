@@ -3,7 +3,7 @@ import { Component, inject } from '@angular/core';
 import { APISignalService } from './api-signal.service';
 
 @Component({
-  selector: 'app-orphan-signal-payload-simple',
+  selector: 'app-orphan-signal-simple',
   imports: [NgFor],
   template: `
     <ul>
@@ -13,7 +13,7 @@ import { APISignalService } from './api-signal.service';
     </ul>
   `,
 })
-export class OrphanSignalPayloadSimpleComponent {
+export class OrphanSignalSimpleComponent {
   apiSignalService = inject(APISignalService);
 
   ngOnInit(): void {
