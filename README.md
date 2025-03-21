@@ -2,6 +2,12 @@
 
 ## Goals AC's
 
+> Test old and new Angular practices related to API request and state management
+
+### Simple/Direct Api Request
+1. Using a few API services
+
+### Nested Complex API Request
 1.	Get all country names and display on the page: 
 https://restcountries.com/v3.1/independent?fields=name
 
@@ -15,7 +21,7 @@ https://restcountries.com/v3.1/lang/spanish?fields=name
 
 ## Demo
 
-![](./src/assets/api-requests.png)
+![modern-angular](./src/assets/signals-modern-angular.png)
 
 ---
 

@@ -29,13 +29,13 @@ import { ParentInputSignalComponent } from './SoC/input-signal/parent-input-sign
       <a routerLink="">#️⃣</a>
       <a routerLink="/SoC/input-output">🔴 SoC Parent <-> Child API Observable API Nested</a>
       <a routerLink="/SoC/input-signal">🔴 SoC Parent <-> Child, input-signal, API Observable API Nested</a>
-      <a routerLink="/orphan-observable">🟡 Orphan Observable</a>
-      <a routerLink="/orphan-signal">🟡 Orphan Signal</a>
-      <a routerLink="/orphan-signal-simple">🟡 Orphan Signal API Simple</a>
-      <a routerLink="/orphan-signal-nested">🟡 Orphan Signal API Nested</a>
-      <a routerLink="/orphan-signal-httpresource">🔵 Orphan Signal API Simple HttpResource</a>
-      <a routerLink="/orphan-signal-httpresource-reactiveForm">🔵 Orphan Signal API Simple HttpResource reactive form</a>
-      <a routerLink="/orphan-signal-httpresource-signal">🔵 Orphan Signal API Simple HttpResource</a>
+      <a routerLink="/orphan-observable">🔴 Orphan Observable</a>
+      <a routerLink="/orphan-signal">🟠 Orphan Signal</a>
+      <a routerLink="/orphan-signal-simple">🟠 Orphan Signal API Simple</a>
+      <a routerLink="/orphan-signal-nested">🟠 Orphan Signal API Nested</a>
+      <a routerLink="/orphan-signal-httpresource">🟡 Orphan Signal Simple API request using HttpResource</a>
+      <a routerLink="/orphan-signal-httpresource-reactiveForm">🟡 Orphan Signal API Simple HttpResource + Reactive form</a>
+      <a routerLink="/orphan-signal-httpresource-signal">🟡 Orphan Signal API Simple HttpResource</a>
       <a routerLink="/orphan-signal-input-pattern">🟢 Orphan fully Signal-based using signal-input-pattern (1-way binding)</a>
       <a routerLink="/orphan-signal-model">🟢 Orphan fully Signal-based using model() (2-way binding)</a>
     </nav>
