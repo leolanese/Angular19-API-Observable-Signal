@@ -47,4 +47,5 @@ export class OrphanSignalInputPatternComponent {
     const value = (event.target as HTMLInputElement).value;
     this.vehicleService.searchTerm.set(value);
   }
+  
 } 

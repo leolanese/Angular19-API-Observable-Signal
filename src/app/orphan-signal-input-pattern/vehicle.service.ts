@@ -24,4 +24,5 @@ export class VehicleService {
     return err ? 'Failed to fetch vehicles' : null;
   });
   vehicles = computed(() => this.vehiclesResource.value()?.results || []);
+
 } 
