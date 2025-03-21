@@ -27,7 +27,7 @@ https://restcountries.com/v3.1/lang/spanish?fields=name
 
 ---
 
-## 🔸 Solution Arquitecture
+## 🔸 Example Solution Arquitecture
 
 ```js
 src/
