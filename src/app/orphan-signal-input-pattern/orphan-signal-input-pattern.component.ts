@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { VehicleService } from './vehicle.service';
 
 @Component({
-  selector: 'app-orphan-signal-based',
+  selector: 'app-orphan-signal-input-pattern',
   standalone: true,
   template: `
     <label>Search: </label>
@@ -38,7 +38,7 @@ import { VehicleService } from './vehicle.service';
     }
   `
 })
-export class OrphanSignalBasedComponent {
+export class OrphanSignalInputPatternComponent {
   vehicleService = inject(VehicleService);
   
   // Event handling directly updates the signal

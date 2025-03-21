@@ -1,9 +1,10 @@
 import { Routes } from '@angular/router';
 import { OrphanObservableComponent } from './orphan-observable/orphan-observable.component';
-import { OrphanSignalBasedComponent } from './orphan-signal-based/orphan-signal-based.component';
 import { OrphanSignalHttpresourceReactiveFormComponent } from './orphan-signal-httpresource-reactiveForm/orphan-signal-httpresource-reactiveForm.component';
 import { OrphanSignaldHttpResourceSignalComponent } from './orphan-signal-httpresource-signal/orphan-signal-httpresource-signal.component';
 import { OrphanSignalHttpResourceComponent } from './orphan-signal-httpresource/orphan-signal-httpresource.component';
+import { OrphanSignalInputPatternComponent } from './orphan-signal-input-pattern/orphan-signal-input-pattern.component';
+import { OrphanSignalModelComponent } from './orphan-signal-model/orphan-signal-model.component';
 import { OrphanSignalNestedComponent } from './orphan-signal-nested/orphan-signal-nested.component';
 import { OrphanSignalSimpleComponent } from './orphan-signal-simple/orphan-signal-simple.component';
 import { OrphanSignalComponent } from './orphan-signal/orphan-signal.component';
@@ -20,6 +21,7 @@ export const routes: Routes = [
   { path: 'orphan-signal-httpresource', component: OrphanSignalHttpResourceComponent},
   { path: 'orphan-signal-httpresource-reactiveForm', component: OrphanSignalHttpresourceReactiveFormComponent},
   { path: 'orphan-signal-httpresource-signal', component: OrphanSignaldHttpResourceSignalComponent},
-  { path: 'orphan-signal-based', component: OrphanSignalBasedComponent},
+  { path: 'orphan-signal-input-pattern', component: OrphanSignalInputPatternComponent},
+  { path: 'orphan-signal-model', component: OrphanSignalModelComponent},
   { path: '**', redirectTo: '', pathMatch: 'full' },
 ];

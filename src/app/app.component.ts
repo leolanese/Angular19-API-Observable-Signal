@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { RouterModule, RouterOutlet } from '@angular/router';
 import { OrphanObservableComponent } from './orphan-observable/orphan-observable.component';
+import { OrphanSignalBasedComponent } from './orphan-signal-input-pattern/orphan-signal-input-pattern.component';
+import { OrphanSignalModelComponent } from './orphan-signal-model/orphan-signal-model.component';
 import { OrphanSignalNestedComponent } from './orphan-signal-nested/orphan-signal-nested.component';
 import { OrphanSignalSimpleComponent } from './orphan-signal-simple/orphan-signal-simple.component';
 import { OrphanSignalComponent } from './orphan-signal/orphan-signal.component';
@@ -17,7 +19,9 @@ import { ParentInputSignalComponent } from './SoC/input-signal/parent-input-sign
     OrphanObservableComponent,
     OrphanSignalComponent,
     OrphanSignalSimpleComponent,
-    OrphanSignalNestedComponent
+    OrphanSignalNestedComponent,
+    OrphanSignalBasedComponent,
+    OrphanSignalModelComponent
   ],
   template: `
     <h1>{{ title }}</h1>
@@ -32,7 +36,8 @@ import { ParentInputSignalComponent } from './SoC/input-signal/parent-input-sign
       <a routerLink="/orphan-signal-httpresource">🔵 Orphan Signal API Simple HttpResource</a>
       <a routerLink="/orphan-signal-httpresource-reactiveForm">🔵 Orphan Signal API Simple HttpResource reactive form</a>
       <a routerLink="/orphan-signal-httpresource-signal">🔵 Orphan Signal API Simple HttpResource</a>
-      <a routerLink="/orphan-signal-based">🟢 Orphan signal-based API Simple HttpResource</a>
+      <a routerLink="/orphan-signal-input-pattern">🟢 Orphan Signal-based using input-pattern (1-way binding)</a>
+      <a routerLink="/orphan-signal-model">🟣 Orphan Signal-based model (2-way binding)</a>
     </nav>
     <router-outlet></router-outlet>
   `,
