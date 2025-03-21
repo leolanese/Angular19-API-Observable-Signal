@@ -4,7 +4,9 @@
 
 ### ⏺ Test legacy Angular Vs new modern Angular practices related to API requests and reactive state management
 
-### ⏺ Test Simple/Direct Api Request using a few API services
+### ⏺ Test Simple/Direct Api Request using a few API services:
+https://jsonplaceholder.typicode.com/posts
+https://swapi.dev/api/vehicles
 
 ### ⏺ Test Nested Complex API Request
 1.	Get all country names and display on the page: 
