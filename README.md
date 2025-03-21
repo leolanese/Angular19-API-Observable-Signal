@@ -2,7 +2,7 @@
 
 ## 🔸 Goals AC's
 
-### ⏺ Test old Vs new modern Angular practices related to API requests and reactive state management
+### ⏺ Test legacy Angular Vs new modern Angular practices related to API requests and reactive state management
 
 ### ⏺ Test Simple/Direct Api Request using a few API services
 
