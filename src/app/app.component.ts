@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterModule, RouterOutlet } from '@angular/router';
 import { OrphanObservableComponent } from './orphan-observable/orphan-observable.component';
-import { OrphanSignalBasedComponent } from './orphan-signal-input-pattern/orphan-signal-input-pattern.component';
+import { OrphanSignalInputPatternComponent } from './orphan-signal-input-pattern/orphan-signal-input-pattern.component';
 import { OrphanSignalModelComponent } from './orphan-signal-model/orphan-signal-model.component';
 import { OrphanSignalNestedComponent } from './orphan-signal-nested/orphan-signal-nested.component';
 import { OrphanSignalSimpleComponent } from './orphan-signal-simple/orphan-signal-simple.component';
@@ -20,7 +20,7 @@ import { ParentInputSignalComponent } from './SoC/input-signal/parent-input-sign
     OrphanSignalComponent,
     OrphanSignalSimpleComponent,
     OrphanSignalNestedComponent,
-    OrphanSignalBasedComponent,
+    OrphanSignalInputPatternComponent,
     OrphanSignalModelComponent
   ],
   template: `
@@ -36,13 +36,13 @@ import { ParentInputSignalComponent } from './SoC/input-signal/parent-input-sign
       <a routerLink="/orphan-signal-httpresource">🔵 Orphan Signal API Simple HttpResource</a>
       <a routerLink="/orphan-signal-httpresource-reactiveForm">🔵 Orphan Signal API Simple HttpResource reactive form</a>
       <a routerLink="/orphan-signal-httpresource-signal">🔵 Orphan Signal API Simple HttpResource</a>
-      <a routerLink="/orphan-signal-input-pattern">🟢 Orphan Signal-based using input-pattern (1-way binding)</a>
-      <a routerLink="/orphan-signal-model">🟣 Orphan Signal-based model (2-way binding)</a>
+      <a routerLink="/orphan-signal-input-pattern">🟢 Orphan fully Signal-based using signal-input-pattern (1-way binding)</a>
+      <a routerLink="/orphan-signal-model">🟢 Orphan fully Signal-based using model() (2-way binding)</a>
     </nav>
     <router-outlet></router-outlet>
   `,
   styles: [`a {font-size: 2em; display: block;}`],
 })
 export class AppComponent {
-  title = 'Angular 19.2+, API request using Observable, Signal and httpResource';
+  title = 'Angular (19.2+) API request using RxJS, Observable, Signal hybrid and fully Signal-based';
 }

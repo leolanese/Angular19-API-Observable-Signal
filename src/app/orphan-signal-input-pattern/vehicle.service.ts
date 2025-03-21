@@ -12,7 +12,7 @@ export class VehicleService {
   private vehiclesResource = httpResource<any>(
     () => ({ 
       url: `${this.baseUrl}${this.searchTerm() ? `?search=${this.searchTerm()}` : ''}`,
-      method: 'POST',
+      method: 'GET',
     }),
     { defaultValue: undefined }
   );

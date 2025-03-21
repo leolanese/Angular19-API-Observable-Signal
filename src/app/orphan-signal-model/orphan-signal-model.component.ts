@@ -1,12 +1,14 @@
-import { Component, inject } from '@angular/core';
+import { Component, effect, inject, model } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { VehicleModelService } from './vehicle-model.service';
 
 @Component({
   selector: 'app-orphan-signal-model',
   standalone: true,
+  imports: [FormsModule],
   template: `
     <label>Search: </label>
-    <input [model]="vehicleService.searchTerm">
+    <input [(ngModel)]="searchTerm">
 
     @if (vehicleService.isLoading()) {
       <div>Loading...</div>
@@ -37,4 +39,32 @@ import { VehicleModelService } from './vehicle-model.service';
 })
 export class OrphanSignalModelComponent {
   vehicleService = inject(VehicleModelService);
+  
+  // Create a local model that connects to the service's signal
+  searchTerm = model<string>('');
+  
+  constructor() {
+    // Initialize with the service value
+    this.searchTerm.set(this.vehicleService.searchTerm());
+    
+    // Set up bidirectional sync between model and service
+    
+    // Update service when model changes
+    effect(() => {
+      const currentModelValue = this.searchTerm();
+      // Avoid infinite loop by checking if values are different
+      if (currentModelValue !== this.vehicleService.searchTerm()) {
+        this.vehicleService.searchTerm.set(currentModelValue);
+      }
+    });
+    
+    // Update model when service changes
+    effect(() => {
+      const currentServiceValue = this.vehicleService.searchTerm();
+      // Avoid infinite loop by checking if values are different
+      if (currentServiceValue !== this.searchTerm()) {
+        this.searchTerm.set(currentServiceValue);
+      }
+    });
+  }
 } 

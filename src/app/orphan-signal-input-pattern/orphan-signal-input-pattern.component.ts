@@ -6,8 +6,9 @@ import { VehicleService } from './vehicle.service';
   standalone: true,
   template: `
     <label>Search: </label>
+    <!--  Input binding reads from the signal -->
     <input 
-      [value]="vehicleService.searchTerm()"  // Input binding reads from the signal
+      [value]="vehicleService.searchTerm()" 
       (input)="onSearch($event)"
     >
 

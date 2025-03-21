@@ -1,12 +1,12 @@
 import { httpResource } from '@angular/common/http';
-import { Injectable, computed, model } from '@angular/core';
+import { Injectable, computed, signal } from '@angular/core';
 
 @Injectable({ providedIn: 'root' })
 export class VehicleModelService {
   private readonly baseUrl = 'https://swapi.dev/api/vehicles';
 
-  // Using model() instead of signal for two-way binding support
-  searchTerm = model<string>('');
+  // Using signal instead of model as model() is only for components/directives
+  searchTerm = signal<string>('');
 
   // Using httpResource() with a search parameter
   private vehiclesResource = httpResource<any>(
