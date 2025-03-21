@@ -140,5 +140,5 @@ It also showcases the usage of an interceptor to log HTTP requests and responses
 ##### :radio_button: Portfolio: <a href="https://www.leolanese.com" target="_blank">www.leolanese.com</a>
 ##### :radio_button: DEV.to: <a href="https://www.dev.to/leolanese" target="_blank">dev.to/leolanese</a>
 ##### :radio_button: Blog: <a href="https://www.leolanese.com/blog" target="_blank">leolanese.com/blog</a>
-##### :radio_button: Questions / Suggestions / Recommendations: `developer@leolanese.com` email me: <a href="mailto:developer@leolanese.com">developer@leolanese.com</a>
+##### :radio_button: Questions / Suggestions / Recommendations: <a href="mailto:developer@leolanese.com">developer@leolanese.com</a>
 
