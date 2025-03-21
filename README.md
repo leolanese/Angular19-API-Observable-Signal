@@ -67,18 +67,15 @@ src/
 - Uses `modern Angular control flow` (@if, @else, @for)
 
 🔵 Data Flow:
-- `Unidirectional Data Flow`: 
+### `Unidirectional Data Flow`: 
 ```js
     Signal → View ([property] binding) = [value]="searchSignal()
     View   → Signal (event() handler) = (input)="signal.set()"
 ```
 - Use `signal-input-pattern`: `[value] + (input) pattern`: `It's simply a combination of 1-way binding (Property [value]="searchSignal()" + event binding (input)="signal.set()")`
-
-This provides: 
 - `Direct Signal Control` (when is read = binding, when is updated = event handler)
 
-- `Bidirectional Data Flow` () TODO:
-    model() implement 2-way binding simplify two-way binding boilerplate
+### `Bidirectional Data Flow` (model() implement 2-way binding simplify two-way binding boilerplate
 
 🔵 Event Handling:
 - Input events directly update signals (this.vehicleService.searchTerm.set(value))
