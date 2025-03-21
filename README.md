@@ -1,13 +1,12 @@
 # Angular (19.2+) Observable + Signals for handling API requests
 
-## Goals AC's
+## 🔸 Goals AC's
 
-> Test old and new Angular practices related to API request and state management
+### ⏺ Test old Vs new modern Angular practices related to API requests and reactive state management
 
-### Simple/Direct Api Request
-1. Using a few API services
+### ⏺ Test Simple/Direct Api Request using a few API services
 
-### Nested Complex API Request
+### ⏺ Test Nested Complex API Request
 1.	Get all country names and display on the page: 
 https://restcountries.com/v3.1/independent?fields=name
 
@@ -19,13 +18,13 @@ https://restcountries.com/v3.1/lang/spanish?fields=name
 
 ---
 
-## Demo
+## 🔸 Demo
 
 ![modern-angular](./src/assets/signals-modern-angular.png)
 
 ---
 
-## Solution Arquitecture
+## 🔸 Solution Arquitecture
 
 ```js
 src/
@@ -37,19 +36,21 @@ src/
      ├── orphan-signal/      // single Component, managing API request using Signals
      ├── orphan-signal-simple/  // single Component, managing API request using Signal
      ├── orphan-signal-nested/  // single Component, managing complex API request using Signal
-     ├── orphan-signal-httpresource // simple Component, managing API request using Signals with httpResouce asynchronous data fetching
-     ├── orphan-signal--httpresource-reactiveForm // Shows how the new signals approach replaces the traditional RxJS pattern
-     ├── orphan-signal-httpresource-signal // 100% fully signal-based. Using direct signal binding with [value] and (input). Simple event handler to update the signal
-     ├── orphan-full-signal // full signal-based approach. 
+     ├── orphan-signal-httpresource/ // simple Component, managing API request using Signals with httpResouce asynchronous data fetching
+     ├── orphan-signal--httpresource-reactiveForm/ // Shows how the new signals approach replaces the traditional RxJS pattern
+     ├── orphan-signal-httpresource-signal/ // 100% fully signal-based. Using direct signal binding with [value] and (input). Simple event handler to update the signal
+     ├── orphan-signal-input-pattern/ // full signal-based approach: 1-way binding 
+     ├── orphan-signal-model/ // full signal-based approach: 2-way binding
      |
      ├── app.component.ts
      ├── auth.interceptor.ts
      └── http.interceptor.ts
 ```
 
-## A few technical mentions
+## 🔸 Technical mentions
 
-🟡 Solution13 100% fully signal-based:
+🟡 Green solutions are 100% fully reactive signal-based which are Angular recommendations:
+
 🔵 Reactive state management
 - `All state is managed through signals in the service`
 
@@ -71,7 +72,7 @@ src/
     Signal → View ([property] binding) = [value]="searchSignal()
     View   → Signal (event() handler) = (input)="signal.set()"
 ```
-- Use `signal input pattern`: `[value] + (input) pattern`: `It's simply a combination of 1-way binding (Property [value]="searchSignal()" + event binding (input)="signal.set()")`
+- Use `signal-input-pattern`: `[value] + (input) pattern`: `It's simply a combination of 1-way binding (Property [value]="searchSignal()" + event binding (input)="signal.set()")`
 
 This provides: 
 - `Direct Signal Control` (when is read = binding, when is updated = event handler)
@@ -93,41 +94,42 @@ This provides:
 - Stays within the signals paradigm and use signals' effect() to automatically handle cleanup (instead OnInit/OnDestroy + No need for manual subscription management)
 
 
-🟡 `SoC`
+🟡 Other technical mentions
+
+🔵 `SoC`
 This example demonstrates the separation of concerns between the: 
 `service (responsible for fetching data)`, 
 `smart component (responsible for handling business logic and passing data to the dummy component)`, `dummy component (responsible for rendering the UI)` 
 
-🟡 `Modern StandAlone Components`:
+🔵 `Modern StandAlone Components`:
 I directly bootstrap the component itself, not its module. This is because standalone components have their own injectors and don't rely on a root module for dependency injection. Promotes code maintainability, reusability, and smaller application size.
 
-🟡 Implemented `TSP mechanism`:
+🔵 Implemented `TSP mechanism`:
 I'm using `Tree Shakeable Providers` in `Services` by using the `providedIn` attribute, this will provide the benefits of both `tree shaking performance` and `dependency injection`,
 meaning that our services will not be included in the final bundle unless they are being used by other services or components. As a result we reduce the bundle size by removing unused code from the bundle.
 
-🟡 `RxJS`
+🔵 `RxJS`
 - `takeUntilDestroyed(this.destroyRef)` to automatically unsubscribe when the component is destroyed, simplifying the cleanup process even further
 - `shareReplay(1)` because multiple components might subscribe to the same observable
 
-
-🟡 `Dependency Injection Pattern`:
+🔵 `Dependency Injection Pattern`:
 I'm using Modern `Dependency Injection functions`, instead traditional `constructor-based dependency injection`as result I will have a more Modular, Less Complex
 
-🟡 Implement Caching:
+🔵 Implement Caching:
 -- `Cache API Service Calls`
 Caches identical HTTP requests within a single component:
 I'm using `shareReplay()` to improve efficiency, ensuring that all subscribers receive the most recent data without triggering multiple HTTP requests.
 
-🟡 `DestroyRef & takeUntilDestroyed()`: Angular 16+
+🔵 `DestroyRef & takeUntilDestroyed()`: Angular 16+
 I'm using provides a more declarative and efficient way to handle automatic cleanup tasks when a component or service is destroyed: `takeUntilDestroyed(this.destroyRef)` to automatically unsubscribe when the component is destroyed, simplifying the cleanup process even further
 
-🟡 `Function-based Interceptor` (optional here): 
+🔵 `Function-based Interceptor` (optional): 
 It also showcases the usage of an interceptor to log HTTP requests and responses. While not necessary for this example, it can be useful for debugging and monitoring purposes (WIP)
 
 
 ---
 ### :100: <i>Thanks!</i>
-#### Now, don't be an stranger. Let's stay in touch!
+#### Now, don't be an stranger. Let's stay in touch ‼
 
 <a href="https://github.com/leolanese" target="_blank" rel="noopener noreferrer">
   <img src="https://scastiel.dev/api/image/leolanese?dark&removeLink" alt="leolanese’s GitHub image" width="600" height="314" />
