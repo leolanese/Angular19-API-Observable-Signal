@@ -52,7 +52,6 @@ The httpResource function creates a Resource that performs an HTTP GET request t
 - Provides computed values for derived state
 - Stays within the signals paradigm and use signals' effect() to automatically handle cleanup (instead OnInit/OnDestroy + No need for manual subscription management)
 
-
 🟡 `SoC`
 This example demonstrates the separation of concerns between the: 
 `service (responsible for fetching data)`, 
