@@ -33,7 +33,7 @@ src/
      ├── orphan-signal-nested/  // single Component, managing complex API request using Signal
      ├── orphan-signal-httpresource // simple Component, managing API request using Signals with httpResouce asynchronous data fetching
      ├── orphan-signal--httpresource-reactiveForm // Shows how the new signals approach replaces the traditional RxJS pattern
-     ├── orphan-signal-httpresource-signal // signal-based approach. Using direct signal binding with [value] and (input). Simple event handler to update the signal
+     ├── orphan-signal-httpresource-signal // 100% fully signal-based. Using direct signal binding with [value] and (input). Simple event handler to update the signal
      ├── orphan-full-signal // full signal-based approach. 
      |
      ├── app.component.ts
@@ -43,22 +43,47 @@ src/
 
 ## A few technical mentions
 
-🟡 The circle is complete:
-`httpResource` asynchronous data fetching (Angular 19.2+)
-This feature simplifies working with RESTful APIs by providing a higher-level abstraction for interacting with resources on a server.
+🟡 Solution13 100% fully signal-based:
+🔵 Reactive state management
+- `All state is managed through signals in the service`
 
-It is designed to reduce boilerplate code when performing common CRUD (Create, Read, Update, Delete) operations. Instead of manually writing HTTP requests for each operation, you can use HttpResource to define a resource and automatically generate methods for interacting with it. Define a resource once, and HttpResource provides methods like get(), post(), put(), delete(), etc., out of the box.
+🔵 Data Management:
+- `No local component state variables` that aren't signals
+- `No RxJS Observables or Subjects`
 
-The httpResource function creates a Resource that performs an HTTP GET request to a specified URL. When provided with a reactive function for the URL, the resource updates automatically as the URL changes via signals. Under the hood, httpResource utilizes Angular's HttpClient, ensuring compatibility with existing interceptors and testing utilities.
+🔵 HTTP Handling:
+- `Signal with httpresource`, for automatic data fetching
 
-> Instead of manually subscribing inside an effect, rxResource allows developers to declare request dependencies and automatically updates when the dependent Signal changes.`
+🔵 Template Binding:
+- Replaces `NgModel` is part of the older Forms API, while signals represent Angular's future
+- `All template expressions use signals` (vehicleService.searchTerm(), vehicleService.isLoading(), etc.)
+- Uses `modern Angular control flow` (@if, @else, @for)
 
-🟡 `Signal with httpresource (with paramenters)`
-- Reactive Forms instead template-driven
-- using Signals for a clean, reactive data flow and reactive state management
-- Using httpResource, with parameter, for automatic data fetching
-- Implements debouncing for performance + Handles errors, in separates function for reusability
-- Provides computed values for derived state
+🔵 Data Flow:
+- `Unidirectional Data Flow`: 
+```js
+    Signal → View ([property] binding) = [value]="searchSignal()
+    View   → Signal (event() handler) = (input)="signal.set()"
+```
+- Use `signal input pattern`: `[value] + (input) pattern`: `It's simply a combination of 1-way binding (Property [value]="searchSignal()" + event binding (input)="signal.set()")`
+
+This provides: 
+- `Direct Signal Control` (when is read = binding, when is updated = event handler)
+
+- `Bidirectional Data Flow` () TODO:
+    model() implement 2-way binding simplify two-way binding boilerplate
+
+🔵 Event Handling:
+- Input events directly update signals (this.vehicleService.searchTerm.set(value))
+- No intermediate transformations using RxJS operators
+
+🔵 Service Implementation:
+- Uses httpResource for HTTP requests (instead HttpClient)
+This provides:
+- Automatically fetches data when the component initializes.
+- Handles loading, success, and error states without extra code.
+- Provides a .value() method to access the latest data.
+- Supports reloading with .reload().
 - Stays within the signals paradigm and use signals' effect() to automatically handle cleanup (instead OnInit/OnDestroy + No need for manual subscription management)
 
 
@@ -78,17 +103,6 @@ meaning that our services will not be included in the final bundle unless they a
 - `takeUntilDestroyed(this.destroyRef)` to automatically unsubscribe when the component is destroyed, simplifying the cleanup process even further
 - `shareReplay(1)` because multiple components might subscribe to the same observable
 
-🟡 `Signals and Observables`
-- Prefer Signals Over BehaviorSubjects for State Management
-- Signals will hold state values and trigger reactivity in our component, whereas Observables are streams of data that may emit multiple values over time.
-
-🟡 `OnPush Change Detection and Reactive Signal` 
-I Changed detection OnPush: So only change detection is triggered locally to the Signal change (changeDetection: ChangeDetectionStrategy.OnPush)
-
-🟡 `TypeScript`
-- TS Generic Type Parameter <T>
-T can replaced with: user, photos, comments, etc. 
-The method returns an Observable of `type T`
 
 🟡 `Dependency Injection Pattern`:
 I'm using Modern `Dependency Injection functions`, instead traditional `constructor-based dependency injection`as result I will have a more Modular, Less Complex
@@ -98,13 +112,8 @@ I'm using Modern `Dependency Injection functions`, instead traditional `construc
 Caches identical HTTP requests within a single component:
 I'm using `shareReplay()` to improve efficiency, ensuring that all subscribers receive the most recent data without triggering multiple HTTP requests.
 
-
 🟡 `DestroyRef & takeUntilDestroyed()`: Angular 16+
 I'm using provides a more declarative and efficient way to handle automatic cleanup tasks when a component or service is destroyed: `takeUntilDestroyed(this.destroyRef)` to automatically unsubscribe when the component is destroyed, simplifying the cleanup process even further
-
-
-🟡 `Angular control flows` syntax: `@for`, `@empty`, etc
-I'm using modern angular control flows, offering better runtime performance than *ngFor (especially for large lists)
 
 🟡 `Function-based Interceptor` (optional here): 
 It also showcases the usage of an interceptor to log HTTP requests and responses. While not necessary for this example, it can be useful for debugging and monitoring purposes (WIP)

@@ -7,7 +7,7 @@ import { VehicleService } from './vehicle.service';
   template: `
     <label>Search: </label>
     <input 
-      [value]="vehicleService.searchTerm()" 
+      [value]="vehicleService.searchTerm()"  // Input binding reads from the signal
       (input)="onSearch($event)"
     >
 
@@ -40,8 +40,8 @@ import { VehicleService } from './vehicle.service';
 })
 export class OrphanSignalBasedComponent {
   vehicleService = inject(VehicleService);
-
-   // Function to update the search
+  
+  // Event handling directly updates the signal
   onSearch(event: Event) {
     const value = (event.target as HTMLInputElement).value;
     this.vehicleService.searchTerm.set(value);
