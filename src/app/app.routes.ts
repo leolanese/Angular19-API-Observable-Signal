@@ -19,26 +19,11 @@ export const routes: Routes = [
   { path: 'orphan-signal', component: OrphanSignalComponent },
   { path: 'orphan-signal-simple', component: OrphanSignalSimpleComponent },
   { path: 'orphan-signal-nested', component: OrphanSignalNestedComponent },
-  {
-    path: 'orphan-signal-httpresource',
-    component: OrphanSignalHttpResourceComponent,
-  },
-  {
-    path: 'orphan-signal-httpresource-reactiveForm',
-    component: OrphanSignalHttpresourceReactiveFormComponent,
-  },
-  {
-    path: 'orphan-signal-httpresource-signal',
-    component: OrphanSignaldHttpResourceSignalComponent,
-  },
-  {
-    path: 'orphan-signal-input-pattern',
-    component: OrphanSignalInputPatternComponent,
-  },
-  {
-    path: 'orphan-signal-input-pattern-nested',
-    component: OrphanSignalInputPatternNestedComponent,
-  },
+  { path: 'orphan-signal-httpresource', component: OrphanSignalHttpResourceComponent,},
+  { path: 'orphan-signal-httpresource-reactiveForm',component: OrphanSignalHttpresourceReactiveFormComponent,},
+  { path: 'orphan-signal-httpresource-signal', component: OrphanSignaldHttpResourceSignalComponent,},
+  { path: 'orphan-signal-input-pattern',component: OrphanSignalInputPatternComponent,},
+  { path: 'orphan-signal-input-pattern-nested',component: OrphanSignalInputPatternNestedComponent,},
   { path: 'orphan-signal-model', component: OrphanSignalModelComponent },
   { path: '**', redirectTo: '', pathMatch: 'full' },
 ];
