@@ -1,14 +1,5 @@
 import { Component } from '@angular/core';
 import { RouterLink, RouterModule, RouterOutlet } from '@angular/router';
-import { OrphanObservableComponent } from './orphan-observable/orphan-observable.component';
-import { OrphanSignalInputPatternNestedComponent } from './orphan-signal-input-pattern-nested/orphan-signal-input-pattern-nested.component';
-import { OrphanSignalInputPatternComponent } from './orphan-signal-input-pattern/orphan-signal-input-pattern.component';
-import { OrphanSignalModelComponent } from './orphan-signal-model/orphan-signal-model.component';
-import { OrphanSignalNestedComponent } from './orphan-signal-nested/orphan-signal-nested.component';
-import { OrphanSignalSimpleComponent } from './orphan-signal-simple/orphan-signal-simple.component';
-import { OrphanSignalComponent } from './orphan-signal/orphan-signal.component';
-import { ParentComponent } from './SoC/input-output/parent.component';
-import { ParentInputSignalComponent } from './SoC/input-signal/parent-input-signal.component';
 
 @Component({
   selector: 'app-root',
@@ -16,21 +7,12 @@ import { ParentInputSignalComponent } from './SoC/input-signal/parent-input-sign
   imports: [
     RouterOutlet,
     RouterModule,
-    RouterLink,
-    ParentComponent,
-    ParentInputSignalComponent,
-    OrphanObservableComponent,
-    OrphanSignalComponent,
-    OrphanSignalSimpleComponent,
-    OrphanSignalNestedComponent,
-    OrphanSignalInputPatternComponent,
-    OrphanSignalInputPatternNestedComponent,
-    OrphanSignalModelComponent
+    RouterLink
   ],
   template: `
     <h1>{{ title }}</h1>
     <nav>
-      <a routerLink="">#️⃣</a>
+      <a routerLink="">🔳</a>
 
       --- Observable- based
       <a routerLink="/SoC/input-output">🔴 SoC Parent <-> Child API Observable API Nested</a>
@@ -52,7 +34,7 @@ import { ParentInputSignalComponent } from './SoC/input-signal/parent-input-sign
       <a routerLink="/orphan-signal-model">🟢 Orphan fully Signal-based using model() (2-way binding)</a>
       
       --- Final fully Signal Search Implementation (Inject Component level)
-      <a routerLink="/orphan-final-signal">🟢 Final Signal-based API request and search</a>
+      <a routerLink="/orphan-final-signal">🟢🏁 Final Signal-based API request and search</a>
     </nav>
     <router-outlet></router-outlet>
   `,

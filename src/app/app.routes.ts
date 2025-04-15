@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { FinalSignalComponent } from './components/final-signal.component';
+import { FinalSignalComponent } from './final-signal/final-signal.component';
 import { OrphanObservableComponent } from './orphan-observable/orphan-observable.component';
 import { OrphanSignalHttpresourceReactiveFormComponent } from './orphan-signal-httpresource-reactiveForm/orphan-signal-httpresource-reactiveForm.component';
 import { OrphanSignaldHttpResourceSignalComponent } from './orphan-signal-httpresource-signal/orphan-signal-httpresource-signal.component';

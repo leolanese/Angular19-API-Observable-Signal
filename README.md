@@ -1,6 +1,11 @@
-# Angular (19.2+) Observable + Signals for handling API requests
+# Angular (19.2+) Observable + Signals for handling API requests 
 
-## 🔸 Goals AC's
+🔴
+🟡
+🟢
+🏁
+
+## ⏺ Goals AC's
 
 ### ⏺ Test legacy Angular Vs new modern Angular practices
 
