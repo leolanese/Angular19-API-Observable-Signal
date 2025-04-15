@@ -6,6 +6,7 @@ import { ServiceAPI } from './serviceAPI';
 @Component({
   selector: 'app-orphan-signal-httpresource-parameter-reactiveForm',
   imports: [ReactiveFormsModule, JsonPipe],
+  providers: [ServiceAPI],
   template: `
       <label>Search: </label>
       <input [formControl]="searchControl" />

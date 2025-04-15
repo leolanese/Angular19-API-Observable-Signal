@@ -5,6 +5,7 @@ import { APISignalService } from './api-signal.service';
 @Component({
   selector: 'app-orphan-signal-nested',
   standalone: true,
+  providers: [APISignalService],
   imports: [CommonModule],
   template: `
     <p>AC1) Get all country names and display on the page:</p>

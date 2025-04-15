@@ -4,6 +4,7 @@ import { APISignalService } from './api-signal.service';
 @Component({
   selector: 'app-orphan-signal-input-pattern-nested',
   standalone: true,
+  providers: [APISignalService],
   template: `
     <p>AC1) Get all country names and display on the page:</p>
     <button (click)="apiSignalService.initialSearchTerm.set('independent?fields=name')">
