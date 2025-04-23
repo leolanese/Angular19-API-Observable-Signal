@@ -10,9 +10,9 @@ import { debounceSignal } from './signal-utilities';
   providedIn: 'root',
 })
 export class ServiceAPI {
-  private url = 'https://swapi.py4e.com/api/vehicles';
+  private readonly url = 'https://swapi.py4e.com/api/vehicles';
 
-   // Input signal for search text
+  // Input signal for search text
   searchSignal = signal<string>('');
 
   // Debounced signal to prevent too many API calls
