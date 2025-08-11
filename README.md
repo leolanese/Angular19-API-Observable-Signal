@@ -29,7 +29,28 @@ https://jsonplaceholder.typicode.com/posts <br />
 
 ## 🔸 Demo
 
-![modern-angular](./src/assets/signals-modern-angular.png)
+```js
+Angular CLI: 20.1.5
+Node: 22.13.1
+Package Manager: npm 11.0.0
+OS: darwin arm64
+
+Angular: 20.1.6
+... animations, common, compiler, compiler-cli, core, forms
+... platform-browser, platform-browser-dynamic, router
+
+Package                         Version
+---------------------------------------------------------
+@angular-devkit/architect       0.2001.5
+@angular-devkit/build-angular   20.1.5
+@angular-devkit/core            20.1.5
+@angular-devkit/schematics      20.1.5
+@angular/cli                    20.1.5
+@schematics/angular             20.1.5
+rxjs                            7.8.2
+typescript                      5.8.3
+zone.js                         0.15.0
+```
 
 ---
 
