@@ -63,7 +63,7 @@ zone.js                         0.15.0
 ✅ ngOnInit() + subscribe() + contructor based inject → Use reactive Signals + computed() 
 ✅ contruct-based DI injection → inject(HttpClient) 
 ✅ Better Ts notation → Protected + readonly template properties for protection and mutability control
-✅ Two-Way Binding (Old Way) Follows signal-input-pattern 
+✅ Two-Way Binding (Old Way) → signal-input-pattern 
 ```
 
 ---
