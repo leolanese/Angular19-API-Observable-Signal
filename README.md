@@ -1,4 +1,4 @@
-# Angular (19.2+) Observable + Signals for handling API requests 
+# Angular (20+) Observable + Signals for handling API requests 
 
 🔴
 🟡
