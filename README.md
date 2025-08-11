@@ -116,7 +116,7 @@ src/
 
 🔵 Data Flow:
 
-### `Unidirectional Data Flow`:
+### `Unidirectional Data Flow`: clean, predictable, and performant! 🚀
 
 - Use `signal-input-pattern`: `[value] + (input) pattern`:
   `It's simply a combination of 1-way binding (Property [value]="searchSignal()" + event binding (input)="signal.set()")`
