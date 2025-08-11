@@ -41,5 +41,5 @@ import { RouterLink, RouterModule, RouterOutlet } from '@angular/router';
   styles: [`a {font-size: 2em; display: block;}`]
 })
 export class AppComponent {
-  title = 'Angular (19.2+) API request using RxJS, Observable, Signal hybrid and fully Signal-based';
+  title = 'Angular (20+) comparing old and new techniques';
 }

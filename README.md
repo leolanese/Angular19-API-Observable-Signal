@@ -54,6 +54,17 @@ zone.js                         0.15.0
 
 ---
 
+## Modern practices latest final signal-based API is implementing
+
+✅ @NgModule  → Standalone component
+✅ *ngFor, *ngIf  → Modern control flow: @if, @for
+✅ HttpResource API for data fetching
+✅ ngOnInit() + subscribe() + contructor based inject → Use reactive Signals + computed() + inject(HttpClient) 
+✅ finalSignalService.searchTerm()", finalSignalService.isLoading() -> Direct Signal Exposure: in the Component: searchTerm(), isLoading(), etc
+✅ Use Protected + readonly template properties for protection and mutability control
+
+---
+
 ## 🔸 Example Solution Arquitecture
 
 ```js
