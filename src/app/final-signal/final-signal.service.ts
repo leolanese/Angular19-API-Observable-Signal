@@ -15,7 +15,7 @@ export class FinalSignalService {
   // Search term signal
   searchTerm = signal<string>('');
 
-  // HTTP Resource for vehicles
+  // HttpResource for vehicles
   private vehiclesResource = httpResource<Vehicle[]>(
     () => ({
       url: `${this.baseUrl}/posts${this.searchTerm() ? `?q=${this.searchTerm()}` : ''}`,

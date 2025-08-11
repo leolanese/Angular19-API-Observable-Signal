@@ -11,10 +11,8 @@
 
 Test API based on Observable, Signal (state management, effect, httpResource, input-pattern, model)
 
-### ⏺ Test simple/direct Api Request using a few API services:
 
 https://jsonplaceholder.typicode.com/posts <br />
-https://swapi.dev/api/vehicles
 
 ### ⏺ Test complex/nested API Requests
 
