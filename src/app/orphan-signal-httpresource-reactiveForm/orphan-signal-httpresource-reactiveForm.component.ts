@@ -1,11 +1,11 @@
-import { JsonPipe } from '@angular/common';
+
 import { Component, inject } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { ServiceAPI } from './serviceAPI';
 
 @Component({
   selector: 'app-orphan-signal-httpresource-parameter-reactiveForm',
-  imports: [ReactiveFormsModule, JsonPipe],
+  imports: [ReactiveFormsModule],
   providers: [ServiceAPI],
   template: `
       <label>Search: </label>

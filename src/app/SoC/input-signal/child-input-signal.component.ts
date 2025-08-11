@@ -1,9 +1,9 @@
-import {AsyncPipe,CommonModule} from '@angular/common';
+import {CommonModule} from '@angular/common';
 import {ChangeDetectionStrategy,Component,EventEmitter,Output,input} from '@angular/core';
 
 @Component({
   selector: 'app-child-input-signal',
-  imports: [CommonModule, AsyncPipe],
+  imports: [CommonModule],
   standalone: true,
   template: `
     <p>AC1) Get all country names and display on the page: </p>

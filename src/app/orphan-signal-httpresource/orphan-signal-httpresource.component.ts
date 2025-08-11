@@ -61,11 +61,13 @@ export class OrphanSignalHttpResourceComponent {
   page = signal(1);
 
   // Create a resource for POST request
-  createUserResource = httpResource<{ data: any[] }>({
-    url: 'https://reqres.in/api/users',
-    method: 'POST',
-    body: { name: 'Leo' }, // Example request body
-  });
+  createUserResource = httpResource<{ data: any[] }>(
+    () => ({
+      url: 'https://reqres.in/api/users',
+      method: 'POST',
+      body: { name: 'Leo' }, // Example request body
+    })
+  );
 
   createUser() {
     // not .post()
