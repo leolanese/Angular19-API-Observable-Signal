@@ -3,7 +3,7 @@
 🔴
 🟡
 🟢
-🏁
+🚀
 
 ## ⏺ Goals AC's
 
@@ -54,14 +54,17 @@ zone.js                         0.15.0
 
 ---
 
-## Modern practices latest final signal-based API is implementing
+## Modern practices latest final signal-based API is implementing 🚀
 
+```js
 ✅ @NgModule  → Standalone component
 ✅ *ngFor, *ngIf  → Modern control flow: @if, @for
 ✅ HttpResource API for data fetching
 ✅ ngOnInit() + subscribe() + contructor based inject → Use reactive Signals + computed() + inject(HttpClient) 
 ✅ finalSignalService.searchTerm()", finalSignalService.isLoading() -> Direct Signal Exposure: in the Component: searchTerm(), isLoading(), etc
 ✅ Use Protected + readonly template properties for protection and mutability control
+Follows signal-input-pattern 
+```
 
 ---
 
@@ -115,13 +118,21 @@ src/
 
 ### `Unidirectional Data Flow`:
 
+- Use `signal-input-pattern`: `[value] + (input) pattern`:
+  `It's simply a combination of 1-way binding (Property [value]="searchSignal()" + event binding (input)="signal.set()")`
+-- The Two Parts of `Signal-Input-Pattern`: 
+```js
+<!-- Template - Signal-Input-Pattern -->
+<input 
+  [value]="signalService.searchTerm()"  <!-- Signal → View -->
+  (input)="onSearch($event)"            <!-- View → Signal -->
+/>
+```
 ```js
     Signal → View ([property] binding) = [value]="searchSignal()
     View   → Signal (event() handler) = (input)="signal.set()"
 ```
 
-- Use `signal-input-pattern`: `[value] + (input) pattern`:
-  `It's simply a combination of 1-way binding (Property [value]="searchSignal()" + event binding (input)="signal.set()")`
 
 - `Direct Signal Control` (when is read = binding, when is updated = event handler)
 

@@ -34,7 +34,7 @@ import { RouterLink, RouterModule, RouterOutlet } from '@angular/router';
       <a routerLink="/orphan-signal-model">🟢 Orphan fully Signal-based using model() (2-way binding)</a>
       
       --- Final fully Signal Search Implementation (Inject Component level)
-      <a routerLink="/orphan-final-signal">🟢🏁 Final Signal-based API request and search</a>
+      <a routerLink="/orphan-final-signal">🟢 🚀 Final Signal-based API request and search</a>
     </nav>
     <router-outlet></router-outlet>
   `,

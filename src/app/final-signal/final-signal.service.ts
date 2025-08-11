@@ -32,10 +32,10 @@ export class SignalService {
     const err = this.postsResource.error();
     return err ? 'Failed to fetch items' : null;
   });
-  readonly posts = computed(() => this.postsResource.value() || []);
+  readonly posts = computed(() => this.postsResource.value() ?? []);
 
   // Method to update search term
-  updateSearch(term: string): void {
+  updateSearch = (term: string): void => {
     this.searchTerm.set(term);
     this.postsResource.reload();
   }
