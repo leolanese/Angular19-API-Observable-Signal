@@ -59,11 +59,11 @@ zone.js                         0.15.0
 ```js
 ✅ @NgModule  → Standalone component
 ✅ *ngFor, *ngIf  → Modern control flow: @if, @for
-✅ HttpResource API for data fetching
-✅ ngOnInit() + subscribe() + contructor based inject → Use reactive Signals + computed() + inject(HttpClient) 
-✅ finalSignalService.searchTerm()", finalSignalService.isLoading() -> Direct Signal Exposure: in the Component: searchTerm(), isLoading(), etc
-✅ Use Protected + readonly template properties for protection and mutability control
-Follows signal-input-pattern 
+✅ HttpClient → HttpResource API for data fetching
+✅ ngOnInit() + subscribe() + contructor based inject → Use reactive Signals + computed() 
+✅ contruct-based DI injection → inject(HttpClient) 
+✅ Better Ts notation → Protected + readonly template properties for protection and mutability control
+✅ Two-Way Binding (Old Way) Follows signal-input-pattern 
 ```
 
 ---
