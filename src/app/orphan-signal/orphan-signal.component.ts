@@ -7,6 +7,7 @@ import { APISignalService } from './api-signal.service';
 @Component({
   selector: 'app-orphan-signal',
   imports: [CommonModule],
+  providers: [APISignalService], // I do need this? Answer: Yes, because it's a singleton
   template: `
     <p>AC1) Get all country names and display on the page:</p>
     <button (click)="fetchData('independent?fields=name')">Fetch AC1</button>

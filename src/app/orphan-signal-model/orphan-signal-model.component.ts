@@ -5,6 +5,7 @@ import { VehicleModelService } from './vehicle-model.service';
 @Component({
   selector: 'app-orphan-signal-model',
   standalone: true,
+  providers: [VehicleModelService],
   imports: [FormsModule],
   template: `
     <label>Search: </label>

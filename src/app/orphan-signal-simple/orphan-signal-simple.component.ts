@@ -5,6 +5,7 @@ import { APISignalService } from './api-signal.service';
 @Component({
   selector: 'app-orphan-signal-simple',
   imports: [NgFor],
+  providers: [APISignalService],
   template: `
     <ul>
       <li *ngFor="let item of apiSignalService.data$()">
@@ -19,7 +20,7 @@ export class OrphanSignalSimpleComponent {
   ngOnInit(): void {
     const url = `https://jsonplaceholder.typicode.com/posts`
 
-    this.apiSignalService.getSignalData(url); // Fetch data when the component initializes
+    this.apiSignalService.getSignalData(url); // Fetch data when the component initialises
   }
 
 }

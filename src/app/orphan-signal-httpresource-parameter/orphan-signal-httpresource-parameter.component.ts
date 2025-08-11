@@ -4,6 +4,7 @@ import { ServiceAPI } from './serviceAPI';
 @Component({
   selector: 'app-orphan-signal-httpresource-parameter',
   standalone: true,
+  providers: [ServiceAPI],
   template: `
     <label>Search: </label>
     <input 

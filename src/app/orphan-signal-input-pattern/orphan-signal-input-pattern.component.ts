@@ -4,6 +4,7 @@ import { VehicleService } from './vehicle.service';
 @Component({
   selector: 'app-orphan-signal-input-pattern',
   standalone: true,
+  providers: [VehicleService],
   template: `
     <label>Search: </label>
     <!--  Input binding reads from the signal -->
