@@ -39,4 +39,9 @@ export class SignalService {
     this.searchTerm.set(term);
     this.postsResource.reload();
   }
+
+  // Public method to reload the posts resource
+  reload = (): void => {
+    this.postsResource.reload();
+  }
 } 
